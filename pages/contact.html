@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — The Skinny Baker</title>
+  <meta name="description" content="Get in touch with The Skinny Baker. Visit our cafe, call us, or reach out on social media.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Libre+Franklin:wght@300;400;500;600;700&family=Italiana&family=DM+Mono:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/contact.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav scrolled">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">The Skinny Baker</a>
+      <div class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></div>
+      <div class="nav__links">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="menu.html" class="nav__link">Menu</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link active">Contact</a>
+        <a href="order.html" class="nav__link nav__link--cta">Order Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <span class="section-label reveal">Get in Touch</span>
+    <h1 class="page-header__title reveal">Contact Us</h1>
+    <p class="page-header__subtitle reveal">We'd love to hear from you</p>
+  </header>
+
+  <!-- Contact Content -->
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact Info -->
+        <div class="contact-info reveal-left">
+          <div class="contact-info__card">
+            <span class="section-label">Reach Out</span>
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="opacity: 0.8; margin-bottom: 2rem;">Have questions about an order? Want to discuss a custom design? Or just want to say hi? We're here for you.</p>
+
+            <div class="contact-info__items">
+              <div class="contact-info__item">
+                <div class="contact-info__icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <strong>Visit Us</strong>
+                  <p>One Tree Plaza Hotel Commercial Center,<br>R. Duterte St., Banawa, Cebu City</p>
+                </div>
+              </div>
+
+              <div class="contact-info__item">
+                <div class="contact-info__icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <strong>Call Us</strong>
+                  <p><a href="tel:09991712166">0999-171-2166</a></p>
+                </div>
+              </div>
+
+              <div class="contact-info__item">
+                <div class="contact-info__icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <strong>Operating Hours</strong>
+                  <p>Monday - Tuesday: 11AM - 8PM<br>Wednesday - Sunday: 10AM - 10PM</p>
+                </div>
+              </div>
+
+              <div class="contact-info__item">
+                <div class="contact-info__icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:jjcavada1@gmail.com">jjcavada1@gmail.com</a></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="contact-social">
+              <h4>Follow Us</h4>
+              <div class="contact-social__links">
+                <a href="#" class="contact-social__link" target="_blank" rel="noopener" aria-label="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                  <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/theskinnybakerph" class="contact-social__link" target="_blank" rel="noopener" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                  <span>Instagram</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="contact-map reveal-right">
+          <div class="contact-map__wrapper">
+            <iframe
+              src="https://maps.google.com/maps?q=OneTree+Plaza+Hotel+Cebu,+8V7H%2B8WV,+R.+Duterte+St,+Cebu+City,+6000+Cebu&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              class="contact-map__iframe"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="The Skinny Baker Location"
+            ></iframe>
+          </div>
+
+          <!-- Quick Message -->
+          <div class="contact-quick">
+            <h3>Quick Message</h3>
+            <p>For orders, please use our <a href="order.html">Order Form</a>. For inquiries, reach out via our social media or send us a message below.</p>
+            <form class="contact-form" onsubmit="return false;">
+              <div class="contact-form__group">
+                <input type="text" placeholder="Your Name" class="contact-form__input" required>
+              </div>
+              <div class="contact-form__group">
+                <input type="email" placeholder="Your Email" class="contact-form__input" required>
+              </div>
+              <div class="contact-form__group">
+                <textarea placeholder="Your Message" class="contact-form__textarea" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary" style="width: 100%;">
+                Send Message <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--surface faq-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-title centered">FAQ</h2>
+      </div>
+
+      <div class="faq-list reveal" data-stagger>
+        <div class="faq-item">
+          <button class="faq-item__question">
+            <span>How far in advance should I place my order?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>We recommend placing orders at least 5 days before your desired pickup or delivery date. For complex designs or peak seasons, earlier is better.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question">
+            <span>What payment methods do you accept?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>We accept BPI bank transfer, GCash, and PayPal. A 50% down payment is required 5 days before the pickup/delivery date, with the remaining balance settled on the day of pickup/delivery.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question">
+            <span>Do you deliver?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>Yes! We arrange delivery via Lalamove or Grab. Delivery fee will be sent the day before. We recommend Car delivery for cake safety. You can also book your own courier or pick up at our cafe.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question">
+            <span>Can I cancel my order?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>Cancellations must be made at least 5 days before the delivery date. If a down payment was made, it will be converted to a Skinny Baker Cake Fund valid for 1 year. Late cancellations are not accepted.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question">
+            <span>How do I send my cake design?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>After submitting your order form, send your design inspiration or reference photos to our Instagram or Facebook page. We'll confirm the design details with you directly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question">
+            <span>What's the base flavor for all cakes?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>Our base flavor is Chocolate Moist Cake (included in the price). Upgrades include Vanilla Buttercake (+PHP 100), Red Velvet (+PHP 150), Carrot Cake (+PHP 150), Moist Banana Cake (+PHP 150), and Matcha Buttercake (+PHP 200). Custom flavors are also available — just ask!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <span class="footer__brand">The Skinny Baker</span>
+          <p class="footer__about">Handcrafted cakes and cupcakes made with love in Cebu City.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/theskinnybakerph" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Quick Links</h4>
+          <a href="../index.html" class="footer__link">Home</a>
+          <a href="menu.html" class="footer__link">Menu</a>
+          <a href="gallery.html" class="footer__link">Gallery</a>
+          <a href="about.html" class="footer__link">About Us</a>
+          <a href="contact.html" class="footer__link">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Products</h4>
+          <a href="menu.html" class="footer__link">Custom Cakes</a>
+          <a href="menu.html" class="footer__link">Bento Cakes</a>
+          <a href="menu.html" class="footer__link">Cupcakes</a>
+          <a href="menu.html" class="footer__link">Tiramisu</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Visit Us</h4>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-map-marker-alt" style="width:20px;"></i> One Tree Plaza Hotel Commercial Center, R. Duterte St., Banawa, Cebu City</p>
+          <a href="tel:09991712166" class="footer__link"><i class="fas fa-phone" style="width:20px;"></i> 0999-171-2166</a>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-clock" style="width:20px;"></i> Mon-Tue: 11AM-8PM</p>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-clock" style="width:20px;visibility:hidden;"></i> Wed-Sun: 10AM-10PM</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 The Skinny Baker. All rights reserved.</span>
+        <span>Made with <i class="fas fa-heart" style="color:var(--clr-accent);"></i> in Cebu City</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/contact.js"></script>
+</body>
+</html>

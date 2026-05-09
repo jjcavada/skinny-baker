@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — The Skinny Baker</title>
+  <meta name="description" content="Browse our gallery of custom cakes, bento cakes, cupcakes and tiramisu creations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Libre+Franklin:wght@300;400;500;600;700&family=Italiana&family=DM+Mono:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/gallery.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav scrolled">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">The Skinny Baker</a>
+      <div class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></div>
+      <div class="nav__links">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="menu.html" class="nav__link">Menu</a>
+        <a href="gallery.html" class="nav__link active">Gallery</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="order.html" class="nav__link nav__link--cta">Order Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <span class="section-label reveal">Browse Our</span>
+    <h1 class="page-header__title reveal">Gallery</h1>
+    <p class="page-header__subtitle reveal">A taste of our creations</p>
+  </header>
+
+  <!-- Gallery -->
+  <section class="section gallery-section">
+    <div class="container">
+
+      <!-- Filter -->
+      <div class="gallery-filter reveal" data-stagger>
+        <button class="gallery-filter__btn active" data-filter="all">All</button>
+        <button class="gallery-filter__btn" data-filter="custom">Custom Cakes</button>
+        <button class="gallery-filter__btn" data-filter="bento">Bento Cakes</button>
+        <button class="gallery-filter__btn" data-filter="tiramisu">Tiramisu</button>
+        <button class="gallery-filter__btn" data-filter="cupcakes">Cupcakes</button>
+        <button class="gallery-filter__btn" data-filter="specialty">Specialty</button>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="masonry" data-stagger>
+        <div class="masonry__item" data-category="bento">
+          <img src="../Cakes_design/5.png" alt="4-inch Bento Cake" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Bento Cake</span>
+            <h3 class="masonry__title">4" Bento Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="tiramisu">
+          <img src="../Tiramisu/1.png" alt="Classic Tiramisu" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Tiramisu</span>
+            <h3 class="masonry__title">Classic Tiramisu</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--wide" data-category="custom">
+          <img src="../Cakes_design/4.png" alt="Two-Tier Cake" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Two-Tier Elegance</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="cupcakes">
+          <img src="../Bento cakes/18.png" alt="Cupcakes" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Cupcakes</span>
+            <h3 class="masonry__title">Dozen Cupcakes</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--tall" data-category="custom">
+          <img src="../Cakes_design/21.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Floral Design</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="bento">
+          <img src="../Cakes_design/6.png" alt="6-inch Bento Cake" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Bento Cake</span>
+            <h3 class="masonry__title">6" Bento Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="tiramisu">
+          <img src="../Tiramisu/3.png" alt="Matcha Tiramisu" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Tiramisu</span>
+            <h3 class="masonry__title">Matcha Tiramisu</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--wide" data-category="specialty">
+          <img src="../Bento cakes/21.png" alt="Letter Cake" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Specialty</span>
+            <h3 class="masonry__title">Letter Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/2.png" alt="7-inch Round Cake" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">7" Round Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="bento">
+          <img src="../Cakes_design/9.png" alt="Bento with Flowers" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Bento Cake</span>
+            <h3 class="masonry__title">Bento with Flowers</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="specialty">
+          <img src="../Bento cakes/10.png" alt="Number Cake" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Specialty</span>
+            <h3 class="masonry__title">Number Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/3.png" alt="8-inch Round Cake" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">8" Round Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="tiramisu">
+          <img src="../Tiramisu/2.png" alt="Biscoff Tiramisu" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Tiramisu</span>
+            <h3 class="masonry__title">Biscoff Tiramisu</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--tall" data-category="custom">
+          <img src="../Cakes_design/22.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Custom Creation</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="tiramisu">
+          <img src="../Tiramisu/4.png" alt="Berry Tiramisu" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Tiramisu</span>
+            <h3 class="masonry__title">Berry Tiramisu</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/23.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Designer Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--wide" data-category="custom">
+          <img src="../Cakes_design/24.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Celebration Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/25.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Elegant Design</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/26.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Themed Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--tall" data-category="custom">
+          <img src="../Cakes_design/27.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Artisan Design</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/28.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Special Occasion</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/29.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Birthday Delight</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--wide" data-category="custom">
+          <img src="../Cakes_design/30.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Party Centerpiece</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/32.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Fondant Creation</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/33.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Buttercream Dream</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item masonry__item--tall" data-category="custom">
+          <img src="../Cakes_design/34.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Handcrafted Design</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/36.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Anniversary Cake</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/37.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Sweet Surprise</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/39.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Whimsical Design</h3>
+          </div>
+        </div>
+
+        <div class="masonry__item" data-category="custom">
+          <img src="../Cakes_design/41.png" alt="Custom Design" loading="lazy">
+          <div class="masonry__overlay">
+            <span class="masonry__tag">Custom Cake</span>
+            <h3 class="masonry__title">Grand Celebration</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <button class="lightbox__prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox__next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox__content">
+      <div class="lightbox__image-wrap">
+        <img class="lightbox__image" src="" alt="Cake Design">
+      </div>
+      <div class="lightbox__info">
+        <span class="lightbox__tag">Category</span>
+        <h3 class="lightbox__title">Title</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="section section--dark cta-section">
+    <div class="container text-center">
+      <span class="section-label reveal" style="color: var(--clr-gold);">Love What You See?</span>
+      <h2 class="reveal" style="color: var(--clr-white); margin-bottom: 1rem;">Order Your Dream Cake</h2>
+      <p class="reveal" style="margin: 0 auto 2rem; opacity: 0.85; color: var(--clr-surface);">Send us your design inspiration and we'll bring it to life.</p>
+      <a href="order.html" class="btn btn--gold reveal">Order Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <span class="footer__brand">The Skinny Baker</span>
+          <p class="footer__about">Handcrafted cakes and cupcakes made with love in Cebu City.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/theskinnybakerph" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Quick Links</h4>
+          <a href="../index.html" class="footer__link">Home</a>
+          <a href="menu.html" class="footer__link">Menu</a>
+          <a href="gallery.html" class="footer__link">Gallery</a>
+          <a href="about.html" class="footer__link">About Us</a>
+          <a href="contact.html" class="footer__link">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Products</h4>
+          <a href="menu.html" class="footer__link">Custom Cakes</a>
+          <a href="menu.html" class="footer__link">Bento Cakes</a>
+          <a href="menu.html" class="footer__link">Cupcakes</a>
+          <a href="menu.html" class="footer__link">Tiramisu</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Visit Us</h4>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-map-marker-alt" style="width:20px;"></i> One Tree Plaza Hotel Commercial Center, R. Duterte St., Banawa, Cebu City</p>
+          <a href="tel:09991712166" class="footer__link"><i class="fas fa-phone" style="width:20px;"></i> 0999-171-2166</a>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-clock" style="width:20px;"></i> Mon-Tue: 11AM-8PM</p>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-clock" style="width:20px;visibility:hidden;"></i> Wed-Sun: 10AM-10PM</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 The Skinny Baker. All rights reserved.</span>
+        <span>Made with <i class="fas fa-heart" style="color:var(--clr-accent);"></i> in Cebu City</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/gallery.js"></script>
+</body>
+</html>

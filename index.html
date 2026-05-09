@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Skinny Baker — Cakes & Cupcakes | Cebu City</title>
+  <meta name="description" content="Handcrafted cakes and cupcakes in Cebu City. Custom designs, premium flavors. Order online for pickup or delivery from The Skinny Baker.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Libre+Franklin:wght@300;400;500;600;700&family=Italiana&family=DM+Mono:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav nav--centered">
+    <div class="nav__inner">
+      <div class="nav__hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link active">Home</a>
+        <a href="pages/menu.html" class="nav__link">Menu</a>
+        <a href="pages/gallery.html" class="nav__link">Gallery</a>
+        <a href="pages/about.html" class="nav__link">About</a>
+        <a href="pages/contact.html" class="nav__link">Contact</a>
+        <a href="pages/order.html" class="nav__link nav__link--cta">Order Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO — Scroll-Driven Video ========== -->
+  <section class="hero" id="heroSection">
+
+    <!-- Sticky layer: video + all frames inside so they share the dark background -->
+    <div class="hero__video-wrap">
+      <video class="hero__video" id="heroVideo" muted autoplay loop playsinline preload="auto" poster="images/hero-poster.jpg">
+        <source src="Video/HeroPage.mp4" type="video/mp4">
+      </video>
+      <div class="hero__video-overlay"></div>
+
+      <!-- Frame 1: Opening — Logo Composition (visible 0-40% scroll) -->
+      <div class="hero__frame hero__frame--intro" id="heroFrameIntro">
+        <div class="container">
+          <div class="hero-logo">
+
+            <!-- Utensils: Whisk + Rolling Pin crossed -->
+            <div class="hero-logo__utensils">
+              <svg class="hero-logo__whisk" viewBox="0 0 80 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="40" y1="70" x2="40" y2="200" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                <ellipse cx="40" cy="72" rx="4" ry="4" fill="currentColor" opacity="0.5"/>
+                <path d="M40 70 C40 10 20 5 22 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <path d="M40 70 C40 12 28 4 28 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <path d="M40 70 C40 15 34 5 34 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <path d="M40 70 C40 15 46 5 46 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <path d="M40 70 C40 12 52 4 52 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <path d="M40 70 C40 10 60 5 58 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <ellipse cx="40" cy="35" rx="16" ry="30" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.3"/>
+              </svg>
+              <svg class="hero-logo__pin" viewBox="0 0 60 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="24" y="0" width="12" height="30" rx="6" fill="currentColor" opacity="0.6"/>
+                <rect x="22" y="26" width="16" height="6" rx="2" fill="currentColor" opacity="0.5"/>
+                <rect x="18" y="32" width="24" height="136" rx="12" fill="currentColor" opacity="0.25"/>
+                <rect x="18" y="32" width="24" height="136" rx="12" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <rect x="22" y="168" width="16" height="6" rx="2" fill="currentColor" opacity="0.5"/>
+                <rect x="24" y="170" width="12" height="30" rx="6" fill="currentColor" opacity="0.6"/>
+              </svg>
+            </div>
+
+            <!-- Botanical sprigs — left -->
+            <div class="hero-logo__sprig hero-logo__sprig--left">
+              <svg viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M80 160 C75 120 60 80 50 40 C45 20 48 5 50 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+                <path d="M68 130 C55 125 45 115 40 100" stroke="currentColor" stroke-width="1" fill="none"/>
+                <path d="M68 130 C58 130 48 122 40 100" fill="currentColor" opacity="0.15"/>
+                <path d="M62 105 C48 98 42 88 38 72" stroke="currentColor" stroke-width="1" fill="none"/>
+                <path d="M62 105 C52 102 44 92 38 72" fill="currentColor" opacity="0.12"/>
+                <path d="M56 78 C44 72 38 62 36 48" stroke="currentColor" stroke-width="1" fill="none"/>
+                <path d="M56 78 C46 74 40 65 36 48" fill="currentColor" opacity="0.1"/>
+                <circle cx="50" cy="5" r="2.5" fill="currentColor" opacity="0.2"/>
+                <circle cx="36" cy="46" r="2" fill="currentColor" opacity="0.15"/>
+              </svg>
+            </div>
+
+            <!-- Botanical sprigs — right -->
+            <div class="hero-logo__sprig hero-logo__sprig--right">
+              <svg viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 160 C25 120 40 80 50 40 C55 20 52 5 50 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+                <path d="M32 130 C45 125 55 115 60 100" stroke="currentColor" stroke-width="1" fill="none"/>
+                <path d="M32 130 C42 130 52 122 60 100" fill="currentColor" opacity="0.15"/>
+                <path d="M38 105 C52 98 58 88 62 72" stroke="currentColor" stroke-width="1" fill="none"/>
+                <path d="M38 105 C48 102 56 92 62 72" fill="currentColor" opacity="0.12"/>
+                <path d="M44 78 C56 72 62 62 64 48" stroke="currentColor" stroke-width="1" fill="none"/>
+                <path d="M44 78 C54 74 60 65 64 48" fill="currentColor" opacity="0.1"/>
+                <circle cx="50" cy="5" r="2.5" fill="currentColor" opacity="0.2"/>
+                <circle cx="64" cy="46" r="2" fill="currentColor" opacity="0.15"/>
+              </svg>
+            </div>
+
+            <!-- Title text -->
+            <span class="hero-logo__eyebrow">Handcrafted in Cebu City</span>
+            <h1 class="hero-logo__title">
+              <span class="hero-logo__title-the">The</span>
+              <span class="hero-logo__title-script">Skinny Baker</span>
+            </h1>
+            <div class="hero-logo__rule">
+              <span class="hero-logo__rule-line"></span>
+              <span class="hero-logo__rule-diamond"></span>
+              <span class="hero-logo__rule-line"></span>
+            </div>
+            <p class="hero-logo__subtitle">cakes &amp; cupcakes</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll down hint -->
+      <div class="hero__scroll-hint">
+        <span>Scroll</span>
+        <svg width="14" height="24" viewBox="0 0 14 24" fill="none"><path d="M7 0v20m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Cursor glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ========== MARQUEE ========== -->
+  <div class="marquee section--dark">
+    <div class="marquee__track">
+      <span class="marquee__item"><img src="Cakes_design/1.png" alt="" class="marquee__img">Custom Cakes</span>
+      <span class="marquee__sep">&bull;</span>
+      <span class="marquee__item"><img src="Cakes_design/3.png" alt="" class="marquee__img">Cakes</span>
+      <span class="marquee__sep">&bull;</span>
+      <span class="marquee__item"><img src="Bento cakes/2.png" alt="" class="marquee__img">Bento Cakes</span>
+      <span class="marquee__sep">&bull;</span>
+      <span class="marquee__item"><img src="Cakes_design/5.png" alt="" class="marquee__img">Cupcakes</span>
+      <span class="marquee__sep">&bull;</span>
+      <span class="marquee__item"><img src="Tiramisu/1.png" alt="" class="marquee__img">Tiramisu</span>
+      <span class="marquee__sep">&bull;</span>
+      <span class="marquee__item"><img src="Cakes_design/6.png" alt="" class="marquee__img">Letter Cakes</span>
+      <span class="marquee__sep">&bull;</span>
+      <span class="marquee__item"><img src="Cakes_design/9.png" alt="" class="marquee__img">Number Cakes</span>
+      <span class="marquee__sep">&bull;</span>
+      <span class="marquee__item"><img src="Cakes_design/10.png" alt="" class="marquee__img">Two-Tier Cakes</span>
+      <span class="marquee__sep">&bull;</span>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT PREVIEW ========== -->
+  <section class="section about-preview">
+    <div class="container">
+      <div class="about-preview__grid">
+        <div class="about-preview__image reveal-left">
+          <video class="about-preview__img" autoplay muted loop playsinline>
+            <source src="Video/Video1.mp4" type="video/mp4">
+          </video>
+          <div class="about-preview__badge">
+            <span class="script-text">Est.</span>
+            <strong>Cebu City</strong>
+          </div>
+        </div>
+        <div class="about-preview__content reveal-right">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">Baked with Passion,<br>Served with Love</h2>
+          <p>At The Skinny Baker, every cake tells a story. We pour our hearts into creating beautiful, delicious cakes and cupcakes that make your celebrations truly special. From classic chocolate moist cakes to elegant custom designs, each creation is handcrafted with premium ingredients and an artist's eye for detail.</p>
+          <p style="margin-top: 1rem;">Whether it's a birthday, anniversary, or just a sweet craving — we've got you covered.</p>
+          <a href="pages/about.html" class="btn btn--outline" style="margin-top: 2rem;">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED PRODUCTS ========== -->
+  <section class="section section--surface featured">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Our Specialties</span>
+        <h2 class="section-title centered">Signature Creations</h2>
+      </div>
+
+      <div class="featured__grid" data-stagger>
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card__image-wrapper">
+            <img src="./Cakes_design/21.png" alt="Custom Cake" class="card__image" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+            <div class="card__overlay">
+              <a href="pages/order.html" class="btn btn--gold btn--sm">Order Now</a>
+            </div>
+          </div>
+          <div class="card__body">
+            <span class="card__tag">Most Popular</span>
+            <h3 class="card__title">Custom Cakes</h3>
+            <p class="card__text">Your vision, our craft. Fully customizable cakes with your choice of flavor, design, and size.</p>
+            <span class="card__price">Starting at PHP 450</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card__image-wrapper">
+            <img src="./Bento cakes/5.png" alt="Bento Cake" class="card__image" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+            <div class="card__overlay">
+              <a href="pages/order.html" class="btn btn--gold btn--sm">Order Now</a>
+            </div>
+          </div>
+          <div class="card__body">
+            <span class="card__tag">Trending</span>
+            <h3 class="card__title">Bento Cakes</h3>
+            <p class="card__text">Adorable mini cakes packed in a bento box — perfect for intimate celebrations and gifts.</p>
+            <span class="card__price">Starting at PHP 350</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card__image-wrapper">
+            <img src="./Tiramisu/1.png" alt="Tiramisu" class="card__image" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+            <div class="card__overlay">
+              <a href="pages/order.html" class="btn btn--gold btn--sm">Order Now</a>
+            </div>
+          </div>
+          <div class="card__body">
+            <span class="card__tag">House Special</span>
+            <h3 class="card__title">Tiramisu Collection</h3>
+            <p class="card__text">Classic, Biscoff, Matcha, and Berry — our tiramisu lineup is a crowd favorite.</p>
+            <span class="card__price">Starting at PHP 400</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: 3rem;">
+        <a href="pages/menu.html" class="btn btn--primary reveal">View Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS DIVIDER ========== -->
+  <section class="stats-divider">
+    <div class="stats-divider__bg"></div>
+    <div class="stats-divider__grain"></div>
+    <div class="stats-divider__content container">
+      <div class="stats-divider__heading reveal">
+        <span class="section-label" style="color: var(--clr-gold);">By the Numbers</span>
+      </div>
+      <div class="stats-divider__grid" data-stagger>
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="stat-card__number" data-count="500" data-suffix="+">0</span>
+          <span class="stat-card__divider"></span>
+          <span class="stat-card__label">Happy Customers</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 5.5V20l3-2h4c5.52 0 10-4 10-8s-4.48-8-10-8z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
+          </div>
+          <span class="stat-card__number" data-count="50" data-suffix="+">0</span>
+          <span class="stat-card__divider"></span>
+          <span class="stat-card__label">Cake Designs</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <span class="stat-card__number" data-count="10" data-suffix="">0</span>
+          <span class="stat-card__divider"></span>
+          <span class="stat-card__label">Unique Flavors</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <span class="stat-card__number" data-count="100" data-suffix="%">0</span>
+          <span class="stat-card__divider"></span>
+          <span class="stat-card__label">Made with Love</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW TO ORDER ========== -->
+  <section class="section how-it-works">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Simple & Easy</span>
+        <h2 class="section-title centered">How to Order</h2>
+      </div>
+
+      <div class="steps" data-stagger>
+        <div class="step">
+          <div class="step__number">01</div>
+          <div class="step__icon"><i class="fas fa-clipboard-list"></i></div>
+          <h3 class="step__title">Fill the Form</h3>
+          <p class="step__text">Choose your cake size, flavor, and design preferences through our easy order form.</p>
+        </div>
+        <div class="step__connector"></div>
+        <div class="step">
+          <div class="step__number">02</div>
+          <div class="step__icon"><i class="fas fa-comments"></i></div>
+          <h3 class="step__title">We Confirm</h3>
+          <p class="step__text">We'll reach out to confirm your order details, design, and arrange payment.</p>
+        </div>
+        <div class="step__connector"></div>
+        <div class="step">
+          <div class="step__number">03</div>
+          <div class="step__icon"><i class="fas fa-wallet"></i></div>
+          <h3 class="step__title">Pay 50% Down</h3>
+          <p class="step__text">Secure your order with a 50% down payment via BPI, GCash, or PayPal.</p>
+        </div>
+        <div class="step__connector"></div>
+        <div class="step">
+          <div class="step__number">04</div>
+          <div class="step__icon"><i class="fas fa-birthday-cake"></i></div>
+          <h3 class="step__title">Pick Up or Deliver</h3>
+          <p class="step__text">Pick up at our cafe or we'll arrange delivery via Lalamove or Grab.</p>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: 3rem;">
+        <a href="pages/order.html" class="btn btn--primary btn--magnetic reveal">Start Your Order</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS CAROUSEL ========== -->
+  <section class="section section--surface testimonials" id="feedbackCarousel">
+    <div class="container">
+      <div class="feedback-layout">
+
+        <!-- Left: Editorial context -->
+        <div class="feedback-editorial reveal-left">
+          <div class="feedback-editorial__quote">&ldquo;</div>
+          <span class="section-label">Sweet Words</span>
+          <h2 class="section-title">What Our<br>Customers Say</h2>
+          <p class="feedback-editorial__desc">Screenshots straight from our DMs and stories. No scripts, no filters — just real love from real people in Cebu.</p>
+
+          <div class="feedback-editorial__stats">
+            <div class="feedback-editorial__stat">
+              <strong>500+</strong>
+              <span>Orders Delivered</span>
+            </div>
+            <div class="feedback-editorial__stat">
+              <strong>4.9</strong>
+              <span>Average Rating</span>
+            </div>
+          </div>
+
+          <!-- Navigation controls -->
+          <div class="feedback-carousel__controls">
+            <div class="feedback-carousel__nav">
+              <button class="feedback-carousel__arrow feedback-carousel__arrow--prev" aria-label="Previous">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="feedback-carousel__counter">
+                <span class="feedback-carousel__current">01</span>
+                <span class="feedback-carousel__divider">/</span>
+                <span class="feedback-carousel__total">16</span>
+              </div>
+              <button class="feedback-carousel__arrow feedback-carousel__arrow--next" aria-label="Next">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="feedback-carousel__progress">
+              <div class="feedback-carousel__progress-bar" id="carouselProgress"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Phone mockup -->
+        <div class="feedback-phone-col reveal-right">
+          <div class="feedback-carousel__phone">
+            <div class="feedback-carousel__notch"></div>
+            <div class="feedback-carousel__screen">
+              <div class="feedback-carousel__slides">
+                <img src="Feedback_Image/Feedback 1.png" alt="Customer feedback" class="feedback-carousel__img active" data-index="0">
+                <img src="Feedback_Image/Feedback2.png" alt="Customer feedback" class="feedback-carousel__img" data-index="1">
+                <img src="Feedback_Image/Feedback3.png" alt="Customer feedback" class="feedback-carousel__img" data-index="2">
+                <img src="Feedback_Image/feedback4.png" alt="Customer feedback" class="feedback-carousel__img" data-index="3">
+                <img src="Feedback_Image/feedback5.png" alt="Customer feedback" class="feedback-carousel__img" data-index="4">
+                <img src="Feedback_Image/Feedback6.png" alt="Customer feedback" class="feedback-carousel__img" data-index="5">
+                <img src="Feedback_Image/feedback7.png" alt="Customer feedback" class="feedback-carousel__img" data-index="6">
+                <img src="Feedback_Image/8.png" alt="Customer feedback" class="feedback-carousel__img" data-index="7">
+                <img src="Feedback_Image/10.png" alt="Customer feedback" class="feedback-carousel__img" data-index="8">
+                <img src="Feedback_Image/11.png" alt="Customer feedback" class="feedback-carousel__img" data-index="9">
+                <img src="Feedback_Image/12.png" alt="Customer feedback" class="feedback-carousel__img" data-index="10">
+                <img src="Feedback_Image/13.png" alt="Customer feedback" class="feedback-carousel__img" data-index="11">
+                <img src="Feedback_Image/14.png" alt="Customer feedback" class="feedback-carousel__img" data-index="12">
+                <img src="Feedback_Image/16.png" alt="Customer feedback" class="feedback-carousel__img" data-index="13">
+                <img src="Feedback_Image/17.png" alt="Customer feedback" class="feedback-carousel__img" data-index="14">
+                <img src="Feedback_Image/18.png" alt="Customer feedback" class="feedback-carousel__img" data-index="15">
+              </div>
+            </div>
+          </div>
+          <!-- Decorative badge behind phone -->
+          <div class="feedback-phone-col__badge">
+            <i class="fas fa-heart"></i>
+            <span>Verified</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INSTAGRAM FEED ========== -->
+  <section class="section instagram-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Follow Us</span>
+        <h2 class="section-title centered">@theskinnybaker</h2>
+        <p style="margin: 0 auto;">Follow our journey and see our latest creations on Instagram</p>
+      </div>
+
+      <div class="instagram__grid" data-stagger>
+        <a href="https://www.instagram.com/p/DXvUHqKk5iN/" class="instagram__item" target="_blank" rel="noopener">
+          <img src="./Cakes_design/1.png" alt="Mother's Day Collection" style="aspect-ratio: 1; object-fit: cover; width: 100%; display: block;">
+          <div class="instagram__overlay"><i class="fab fa-instagram"></i></div>
+        </a>
+        <a href="https://www.instagram.com/theskinnybakerph" class="instagram__item" target="_blank" rel="noopener">
+          <div class="placeholder-img" data-placeholder="IG Post" style="aspect-ratio: 1;"></div>
+          <div class="instagram__overlay"><i class="fab fa-instagram"></i></div>
+        </a>
+        <a href="https://www.instagram.com/theskinnybakerph" class="instagram__item" target="_blank" rel="noopener">
+          <div class="placeholder-img" data-placeholder="IG Post" style="aspect-ratio: 1;"></div>
+          <div class="instagram__overlay"><i class="fab fa-instagram"></i></div>
+        </a>
+        <a href="https://www.instagram.com/theskinnybakerph" class="instagram__item" target="_blank" rel="noopener">
+          <div class="placeholder-img" data-placeholder="IG Post" style="aspect-ratio: 1;"></div>
+          <div class="instagram__overlay"><i class="fab fa-instagram"></i></div>
+        </a>
+        <a href="https://www.instagram.com/theskinnybakerph" class="instagram__item" target="_blank" rel="noopener">
+          <div class="placeholder-img" data-placeholder="IG Post" style="aspect-ratio: 1;"></div>
+          <div class="instagram__overlay"><i class="fab fa-instagram"></i></div>
+        </a>
+        <a href="https://www.instagram.com/theskinnybakerph" class="instagram__item" target="_blank" rel="noopener">
+          <div class="placeholder-img" data-placeholder="IG Post" style="aspect-ratio: 1;"></div>
+          <div class="instagram__overlay"><i class="fab fa-instagram"></i></div>
+        </a>
+      </div>
+
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="https://www.instagram.com/theskinnybakerph" class="btn btn--outline reveal" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i> Follow on Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA SECTION ========== -->
+  <section class="section section--dark cta-section parallax-section">
+    <div class="parallax-bg cta-bg-wrap">
+      <div class="cta-bg-overlay"></div>
+    </div>
+    <div class="container text-center" style="position: relative; z-index: 1;">
+      <span class="section-label reveal" style="color: var(--clr-gold);">Ready to Order?</span>
+      <h2 class="reveal" style="color: var(--clr-white); margin-bottom: 1rem;">Make Your Celebration<br>Unforgettable</h2>
+      <p class="reveal" style="margin: 0 auto 2rem; opacity: 0.85; color: var(--clr-surface);">Order your custom cake today and let us sweeten your special moments.</p>
+      <a href="pages/order.html" class="btn btn--gold btn--magnetic reveal">Order Your Cake</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <span class="footer__brand">The Skinny Baker</span>
+          <p class="footer__about">Handcrafted cakes and cupcakes made with love in Cebu City. Every celebration deserves something sweet and beautiful.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/theskinnybakerph" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Quick Links</h4>
+          <a href="index.html" class="footer__link">Home</a>
+          <a href="pages/menu.html" class="footer__link">Menu</a>
+          <a href="pages/gallery.html" class="footer__link">Gallery</a>
+          <a href="pages/about.html" class="footer__link">About Us</a>
+          <a href="pages/contact.html" class="footer__link">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Products</h4>
+          <a href="pages/menu.html" class="footer__link">Custom Cakes</a>
+          <a href="pages/menu.html" class="footer__link">Bento Cakes</a>
+          <a href="pages/menu.html" class="footer__link">Cupcakes</a>
+          <a href="pages/menu.html" class="footer__link">Tiramisu</a>
+          <a href="pages/menu.html" class="footer__link">Letter & Number Cakes</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Visit Us</h4>
+          <p class="footer__link" style="cursor: default;">
+            <i class="fas fa-map-marker-alt" style="width: 20px;"></i>
+            One Tree Plaza Hotel Commercial Center, R. Duterte St., Banawa, Cebu City
+          </p>
+          <a href="tel:09991712166" class="footer__link">
+            <i class="fas fa-phone" style="width: 20px;"></i>
+            0999-171-2166
+          </a>
+          <p class="footer__link" style="cursor: default;">
+            <i class="fas fa-clock" style="width: 20px;"></i>
+            Mon-Tue: 11AM - 8PM
+          </p>
+          <p class="footer__link" style="cursor: default;">
+            <i class="fas fa-clock" style="width: 20px; visibility: hidden;"></i>
+            Wed-Sun: 10AM - 10PM
+          </p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 The Skinny Baker. All rights reserved.</span>
+        <span>Made with <i class="fas fa-heart" style="color: var(--clr-accent);"></i> in Cebu City</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

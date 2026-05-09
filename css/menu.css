@@ -1,0 +1,244 @@
+/* ===== MENU PAGE — Editorial Redesign ===== */
+
+.menu-section {
+  padding-bottom: var(--sp-xl);
+}
+
+/* Filter Tabs — refined pill style */
+.menu-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: var(--sp-xl);
+}
+
+.menu-filter__btn {
+  padding: 0.55rem 1.4rem;
+  font-family: var(--ff-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--clr-blush);
+  border-radius: 0;
+  color: var(--clr-muted);
+  background: transparent;
+  transition: all var(--dur-fast) var(--ease-out-expo);
+  cursor: pointer;
+}
+
+.menu-filter__btn:hover,
+.menu-filter__btn.active {
+  background: var(--clr-ink);
+  color: var(--clr-cream);
+  border-color: var(--clr-ink);
+}
+
+/* Category Header */
+.menu-category__header {
+  margin-bottom: var(--sp-lg);
+}
+
+.menu-category__header p {
+  opacity: 0.6;
+  margin-top: 0.5rem;
+  color: var(--clr-muted);
+}
+
+/* Menu Grid */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: var(--sp-md);
+}
+
+/* Menu Card */
+.menu-card {
+  background: var(--clr-white);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(26, 14, 7, 0.05);
+  transition: all var(--dur-med) var(--ease-out-expo);
+  border: 1px solid rgba(26, 14, 7, 0.04);
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(26, 14, 7, 0.1);
+}
+
+.menu-card__image {
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-card__image img,
+.menu-card__image .placeholder-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.menu-card:hover .menu-card__image img,
+.menu-card:hover .menu-card__image .placeholder-img {
+  transform: scale(1.08);
+}
+
+.menu-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: var(--clr-ink);
+  color: var(--clr-cream);
+  font-family: var(--ff-mono);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+}
+
+.menu-card__body { padding: 1.25rem; }
+
+.menu-card__title {
+  font-family: var(--ff-display);
+  font-size: 1.2rem;
+  color: var(--clr-ink);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.menu-card__desc {
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.menu-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--clr-surface);
+}
+
+.menu-card__price {
+  font-family: var(--ff-display);
+  font-size: 0.95rem;
+  color: var(--clr-secondary);
+  font-weight: 600;
+}
+
+.menu-card__cta {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all var(--dur-fast) var(--ease-out-expo);
+}
+
+.menu-card__cta:hover {
+  color: var(--clr-secondary);
+  gap: 0.6rem;
+}
+
+/* Flavors Grid */
+.flavors-section { margin-top: var(--sp-lg); }
+
+.flavors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: var(--sp-md);
+}
+
+.flavor-chip {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-blush);
+  border-radius: 0;
+  padding: 0.9rem 1.1rem;
+  transition: all var(--dur-fast) var(--ease-out-expo);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.flavor-chip:hover {
+  border-color: var(--clr-secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(26, 14, 7, 0.08);
+}
+
+.flavor-chip--custom {
+  border-style: dashed;
+  border-color: var(--clr-accent);
+}
+
+.flavor-chip__name {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  color: var(--clr-ink);
+  font-size: 0.95rem;
+}
+
+.flavor-chip__note {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-secondary);
+}
+
+/* Cake Design Gallery */
+.cake-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: var(--sp-md);
+}
+
+.cake-gallery__item {
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 2px 15px rgba(26, 14, 7, 0.05);
+  transition: all var(--dur-med) var(--ease-out-expo);
+  border: 1px solid rgba(26, 14, 7, 0.04);
+}
+
+.cake-gallery__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(26, 14, 7, 0.12);
+}
+
+.cake-gallery__item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out-expo);
+}
+
+.cake-gallery__item:hover img {
+  transform: scale(1.06);
+}
+
+.cake-gallery-section {
+  background: var(--clr-surface);
+}
+
+@media (max-width: 768px) {
+  .menu-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .flavors-grid { grid-template-columns: 1fr 1fr; }
+  .menu-filter { gap: 0.4rem; }
+  .menu-filter__btn { padding: 0.45rem 0.9rem; font-size: 0.6rem; }
+  .cake-gallery { grid-template-columns: repeat(2, 1fr); }
+}

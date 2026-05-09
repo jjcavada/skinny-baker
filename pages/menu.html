@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — The Skinny Baker | Cakes & Cupcakes</title>
+  <meta name="description" content="Browse our menu of handcrafted cakes, bento cakes, cupcakes, and tiramisu. Custom flavors and sizes available.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Libre+Franklin:wght@300;400;500;600;700&family=Italiana&family=DM+Mono:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/menu.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav scrolled">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__brand">The Skinny Baker</a>
+      <div class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></div>
+      <div class="nav__links">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="menu.html" class="nav__link active">Menu</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <a href="order.html" class="nav__link nav__link--cta">Order Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <span class="section-label reveal">Explore Our</span>
+    <h1 class="page-header__title reveal">Menu</h1>
+    <p class="page-header__subtitle reveal">Handcrafted with premium ingredients</p>
+
+    <!-- Decorative botanical -->
+    <svg class="botanical" style="top: 20%; right: 5%; width: 80px;" viewBox="0 0 80 120" fill="none">
+      <path d="M40 120V50M40 50C25 35 10 20 5 5M40 50C55 35 70 20 75 5" stroke="var(--clr-accent)" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+    </svg>
+  </header>
+
+  <!-- Filter Tabs -->
+  <section class="section menu-section">
+    <div class="container">
+      <div class="menu-filter reveal" data-stagger>
+        <button class="menu-filter__btn active" data-filter="all">All</button>
+        <button class="menu-filter__btn" data-filter="cakes">Custom Cakes</button>
+        <button class="menu-filter__btn" data-filter="bento">Bento Cakes</button>
+        <button class="menu-filter__btn" data-filter="tiramisu">Tiramisu</button>
+        <button class="menu-filter__btn" data-filter="cupcakes">Cupcakes</button>
+        <button class="menu-filter__btn" data-filter="specialty">Specialty</button>
+      </div>
+
+      <!-- Cakes Section -->
+      <div class="menu-category reveal" id="cakes">
+        <div class="menu-category__header">
+          <span class="section-label">Made to Order</span>
+          <h2 class="section-title">Custom Cakes</h2>
+          <p>Choose your size, flavor, and design. Send us your inspiration via Instagram or Facebook!</p>
+        </div>
+
+        <div class="menu-grid" data-stagger>
+          <!-- Size options -->
+          <div class="menu-card" data-category="cakes">
+            <div class="menu-card__image">
+              <img src="../Cakes_design/25.png" alt="6 inch Round Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">6" Round Cake</h3>
+              <p class="menu-card__desc">Perfect for intimate celebrations of 6-8 people</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Starts at PHP 650</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="cakes">
+            <div class="menu-card__image">
+              <img src="../Cakes_design/2.png" alt="7 inch Round Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">7" Round Cake</h3>
+              <p class="menu-card__desc">Great for family gatherings of 10-12 people</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Starts at PHP 850</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="cakes">
+            <div class="menu-card__image">
+              <img src="../Cakes_design/3.png" alt="8 inch Round Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">8" Round Cake</h3>
+              <p class="menu-card__desc">Ideal for parties of 15-20 people</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Starts at PHP 1,050</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="cakes">
+            <div class="menu-card__image">
+              <img src="../Cakes_design/4.png" alt="Two-Tier Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Two-Tier Cake</h3>
+              <p class="menu-card__desc">Show-stopping centerpiece for grand celebrations</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Contact for pricing</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <div class="divider__line"></div>
+        <div class="divider__icon"><i class="fas fa-birthday-cake"></i></div>
+        <div class="divider__line"></div>
+      </div>
+
+      <!-- Bento Cakes -->
+      <div class="menu-category reveal" id="bento">
+        <div class="menu-category__header">
+          <span class="section-label">Bite-Sized Joy</span>
+          <h2 class="section-title">Bento Cakes</h2>
+          <p>Adorable mini cakes in a box — perfect for personal treats and gifts.</p>
+        </div>
+
+        <div class="menu-grid" data-stagger>
+          <div class="menu-card" data-category="bento">
+            <div class="menu-card__image">
+              <img src="../Bento cakes/16.png" alt="4 inch Bento Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">4" Bento Cake</h3>
+              <p class="menu-card__desc">Cute personal-sized cake in a bento box</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Starts at PHP 350</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="bento">
+            <div class="menu-card__image">
+              <img src="../Bento cakes/15.png" alt="6 inch Bento Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">6" Bento Cake</h3>
+              <p class="menu-card__desc">Bigger bento for sharing — fits 4-6 people</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Starts at PHP 500</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="bento">
+            <div class="menu-card__image">
+              <img src="../Bento cakes/5.png" alt="Bento Cake with Flowers">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Bento Cake with Flowers</h3>
+              <p class="menu-card__desc">Bento cake paired with a mini floral arrangement</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Starts at PHP 650</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider">
+        <div class="divider__line"></div>
+        <div class="divider__icon"><i class="fas fa-cookie-bite"></i></div>
+        <div class="divider__line"></div>
+      </div>
+
+      <!-- Tiramisu -->
+      <div class="menu-category reveal" id="tiramisu">
+        <div class="menu-category__header">
+          <span class="section-label">House Specials</span>
+          <h2 class="section-title">Tiramisu Collection</h2>
+          <p>Our famous tiramisu lineup — not available for custom cake designs.</p>
+        </div>
+
+        <div class="menu-grid" data-stagger>
+          <div class="menu-card" data-category="tiramisu">
+            <div class="menu-card__image">
+              <img src="../Tiramisu/1.png" alt="Classic Tiramisu">
+              <span class="menu-card__badge">Bestseller</span>
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Classic Tiramisu</h3>
+              <p class="menu-card__desc">Traditional Italian-style with mascarpone, espresso, and ladyfingers</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">PHP 400</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="tiramisu">
+            <div class="menu-card__image">
+              <img src="../Tiramisu/2.png" alt="Biscoff Tiramisu">
+              <span class="menu-card__badge">Fan Favorite</span>
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Biscoff Tiramisu</h3>
+              <p class="menu-card__desc">Creamy Biscoff twist on the classic with cookie butter layers</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">PHP 450</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="tiramisu">
+            <div class="menu-card__image">
+              <img src="../Tiramisu/3.png" alt="Matcha Tiramisu">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Matcha Tiramisu</h3>
+              <p class="menu-card__desc">Japanese matcha infused tiramisu for green tea lovers</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">PHP 480</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="tiramisu">
+            <div class="menu-card__image">
+              <img src="../Tiramisu/4.png" alt="Berry Tiramisu">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Berry Tiramisu</h3>
+              <p class="menu-card__desc">Fresh mixed berries layered into a fruity tiramisu delight</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">PHP 480</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider">
+        <div class="divider__line"></div>
+        <div class="divider__icon"><i class="fas fa-mug-hot"></i></div>
+        <div class="divider__line"></div>
+      </div>
+
+      <!-- Cupcakes & Specialty -->
+      <div class="menu-category reveal" id="cupcakes-specialty">
+        <div class="menu-category__header">
+          <span class="section-label">More Treats</span>
+          <h2 class="section-title">Cupcakes & Specialty</h2>
+        </div>
+
+        <div class="menu-grid" data-stagger>
+          <div class="menu-card" data-category="cupcakes">
+            <div class="menu-card__image">
+              <img src="../Bento cakes/18.png" alt="Cupcakes">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">One Dozen Cupcakes</h3>
+              <p class="menu-card__desc">12 beautifully decorated cupcakes in your choice of flavor</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">Starts at PHP 600</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="specialty">
+            <div class="menu-card__image">
+              <img src="../Bento cakes/21.png" alt="Letter Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Letter Cakes</h3>
+              <p class="menu-card__desc">Spell out initials or short messages with shaped cakes</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">1 Letter: PHP 800 | 2: PHP 1,400</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-card" data-category="specialty">
+            <div class="menu-card__image">
+              <img src="../Bento cakes/10.png" alt="Number Cake">
+            </div>
+            <div class="menu-card__body">
+              <h3 class="menu-card__title">Number Cakes</h3>
+              <p class="menu-card__desc">Celebrate milestones with number-shaped cakes</p>
+              <div class="menu-card__footer">
+                <span class="menu-card__price">1 Digit: PHP 800 | 2: PHP 1,400</span>
+                <a href="order.html" class="menu-card__cta">Order <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flavors Reference -->
+      <div class="divider">
+        <div class="divider__line"></div>
+        <div class="divider__icon"><i class="fas fa-palette"></i></div>
+        <div class="divider__line"></div>
+      </div>
+
+      <div class="flavors-section reveal">
+        <div class="text-center">
+          <span class="section-label">Choose Your Flavor</span>
+          <h2 class="section-title centered">Available Flavors</h2>
+        </div>
+
+        <div class="flavors-grid" data-stagger>
+          <div class="flavor-chip">
+            <span class="flavor-chip__name">Chocolate Moist Cake</span>
+            <span class="flavor-chip__note">Base flavor (included)</span>
+          </div>
+          <div class="flavor-chip">
+            <span class="flavor-chip__name">Vanilla Buttercake</span>
+            <span class="flavor-chip__note">+ PHP 100</span>
+          </div>
+          <div class="flavor-chip">
+            <span class="flavor-chip__name">Red Velvet</span>
+            <span class="flavor-chip__note">+ PHP 150</span>
+          </div>
+          <div class="flavor-chip">
+            <span class="flavor-chip__name">Carrot Cake</span>
+            <span class="flavor-chip__note">+ PHP 150</span>
+          </div>
+          <div class="flavor-chip">
+            <span class="flavor-chip__name">Moist Banana Cake</span>
+            <span class="flavor-chip__note">+ PHP 150</span>
+          </div>
+          <div class="flavor-chip">
+            <span class="flavor-chip__name">Matcha Buttercake</span>
+            <span class="flavor-chip__note">+ PHP 200</span>
+          </div>
+          <div class="flavor-chip flavor-chip--custom">
+            <span class="flavor-chip__name">Custom Flavor</span>
+            <span class="flavor-chip__note">Message us to discuss</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CAKE DESIGN GALLERY ========== -->
+  <section class="section cake-gallery-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Inspiration</span>
+        <h2 class="section-title centered">Our Cake Designs</h2>
+        <p style="margin: 0 auto 2rem;">Browse through our collection of handcrafted cake designs</p>
+      </div>
+
+      <div class="cake-gallery" data-stagger>
+        <div class="cake-gallery__item"><img src="../Cakes_design/2.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/3.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/4.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/5.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/6.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/9.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/10.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/11.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/13.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/14.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/16.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/17.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/18.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/21.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/22.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/23.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/24.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/25.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/26.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/27.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/28.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/29.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/30.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/32.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/33.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/34.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/36.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/37.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/39.png" alt="Cake Design" loading="lazy"></div>
+        <div class="cake-gallery__item"><img src="../Cakes_design/41.png" alt="Cake Design" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--dark cta-section">
+    <div class="container text-center">
+      <span class="section-label reveal" style="color: var(--clr-gold);">Ready to Order?</span>
+      <h2 class="reveal" style="color: var(--clr-white); margin-bottom: 1rem;">Found Something You Love?</h2>
+      <p class="reveal" style="margin: 0 auto 2rem; opacity: 0.85; color: var(--clr-surface);">Place your order now and let us create something special for you.</p>
+      <a href="order.html" class="btn btn--gold reveal">Order Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <span class="footer__brand">The Skinny Baker</span>
+          <p class="footer__about">Handcrafted cakes and cupcakes made with love in Cebu City.</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/theskinnybakerph" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Quick Links</h4>
+          <a href="../index.html" class="footer__link">Home</a>
+          <a href="menu.html" class="footer__link">Menu</a>
+          <a href="gallery.html" class="footer__link">Gallery</a>
+          <a href="about.html" class="footer__link">About Us</a>
+          <a href="contact.html" class="footer__link">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Products</h4>
+          <a href="menu.html" class="footer__link">Custom Cakes</a>
+          <a href="menu.html" class="footer__link">Bento Cakes</a>
+          <a href="menu.html" class="footer__link">Cupcakes</a>
+          <a href="menu.html" class="footer__link">Tiramisu</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Visit Us</h4>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-map-marker-alt" style="width:20px;"></i> One Tree Plaza Hotel Commercial Center, R. Duterte St., Banawa, Cebu City</p>
+          <a href="tel:09991712166" class="footer__link"><i class="fas fa-phone" style="width:20px;"></i> 0999-171-2166</a>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-clock" style="width:20px;"></i> Mon-Tue: 11AM-8PM</p>
+          <p class="footer__link" style="cursor:default;"><i class="fas fa-clock" style="width:20px;visibility:hidden;"></i> Wed-Sun: 10AM-10PM</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 The Skinny Baker. All rights reserved.</span>
+        <span>Made with <i class="fas fa-heart" style="color:var(--clr-accent);"></i> in Cebu City</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/menu.js"></script>
+</body>
+</html>
