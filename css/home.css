@@ -343,6 +343,96 @@
 
 .card:hover .card__overlay { opacity: 1; }
 
+/* --- Text Mask (Clipping Text) --- */
+.text-mask-section {
+  background: var(--clr-cream, #faf6f0);
+  padding: var(--sp-xl) 0;
+}
+
+.text-mask {
+  text-align: center;
+}
+
+.text-mask__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.text-mask__line {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--clr-ink, #1a0e07);
+  opacity: 0.2;
+}
+
+.text-mask__label {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--clr-muted, #999);
+}
+
+.text-mask__heading {
+  font-family: var(--ff-display);
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 auto 1.5rem;
+
+  /* Clipping mask effect */
+  background: url('../cakeimage.png') center center / cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* Fallback */
+  -webkit-text-fill-color: transparent;
+}
+
+.text-mask__categories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+
+  font-family: var(--ff-display);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  /* Same clipping mask */
+  background: url('../cakeimage.png') center center / cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-mask__dot {
+  font-size: 0.6em;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .text-mask__heading {
+    font-size: clamp(2.8rem, 12vw, 5rem);
+  }
+
+  .text-mask__categories {
+    font-size: clamp(0.85rem, 3vw, 1.2rem);
+    gap: 0.8rem;
+  }
+}
+
 /* --- Stats Divider --- */
 .stats-divider {
   padding: var(--sp-xl) 0;
