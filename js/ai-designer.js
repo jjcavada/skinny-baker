@@ -1,27 +1,28 @@
-/* ===== AI CAKE DESIGNER ===== */
+/* ===== AI CAKE DESIGNER — Interactive Lab ===== */
 (function () {
   const form = document.getElementById('aiDesignerForm');
   if (!form) return;
 
+  // Form
   const promptEl = document.getElementById('aiPrompt');
   const countEl = document.getElementById('aiPromptCount');
   const chips = document.querySelectorAll('.ai-chip');
   const generateBtn = document.getElementById('aiGenerateBtn');
   const regenBtn = document.getElementById('aiRegenBtn');
 
-  const defaultState = document.getElementById('aiDefaultState');
+  // Stage
+  const cakeEl = document.getElementById('aiCakeDefault');
+  const cakeImg = document.getElementById('aiCakeImg');
+  const cakeTagText = document.getElementById('aiCakeTagText');
   const loadingState = document.getElementById('aiLoadingState');
   const loadingText = document.getElementById('aiLoadingText');
-  const resultsEl = document.getElementById('aiResults');
-  const selectedEl = document.getElementById('aiSelected');
-  const selectedImg = document.getElementById('aiSelectedImg');
-  const backBtn = document.getElementById('aiBackToGrid');
-  const orderBtn = document.getElementById('aiOrderBtn');
   const errorState = document.getElementById('aiErrorState');
   const errorMsg = document.getElementById('aiErrorMsg');
   const retryBtn = document.getElementById('aiRetryBtn');
+  const actionBar = document.getElementById('aiActionBar');
+  const orderBtn = document.getElementById('aiOrderBtn');
 
-  // Reference image upload elements
+  // Upload
   const fileInput = document.getElementById('aiFile');
   const uploadEmpty = document.getElementById('aiUploadEmpty');
   const uploadFilled = document.getElementById('aiUploadFilled');
@@ -31,13 +32,15 @@
 
   const activeStyles = new Set();
   let lastPayload = null;
-  let lastResults = [];
-  let referenceImage = null; // { dataUrl, mimeType, base64 }
+  let referenceImage = null;
+  let lastGeneratedSrc = null;
 
+  // ----- Char count -----
   promptEl.addEventListener('input', () => {
     countEl.textContent = promptEl.value.length;
   });
 
+  // ----- Style chips -----
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
       const style = chip.dataset.style;
@@ -55,13 +58,11 @@
   fileInput.addEventListener('change', async (e) => {
     const file = e.target.files && e.target.files[0];
     if (!file) return;
-
     if (file.size > 10 * 1024 * 1024) {
       alert('Image is too large. Max 10MB.');
       fileInput.value = '';
       return;
     }
-
     try {
       const dataUrl = await readFileAsDataURL(file);
       const base64 = dataUrl.split(',')[1];
@@ -97,10 +98,15 @@
     });
   }
 
-  function showOnly(node) {
-    [defaultState, loadingState, resultsEl, selectedEl, errorState].forEach((n) => {
-      if (n) n.hidden = (n !== node);
-    });
+  // ----- State management — single source of truth -----
+  function setState(name) {
+    // Hide all overlays first
+    loadingState.hidden = true;
+    errorState.hidden = true;
+
+    if (name === 'loading') loadingState.hidden = false;
+    else if (name === 'error') errorState.hidden = false;
+    // 'idle' just leaves the cake visible
   }
 
   const loadingPhrases = [
@@ -123,12 +129,13 @@
     loadingTimer = null;
   }
 
+  // ----- Build prompt -----
   function buildPrompt(userText) {
     const styleString = activeStyles.size
       ? `Style cues: ${Array.from(activeStyles).join(', ')}.`
       : '';
     const refLine = referenceImage
-      ? 'Use the attached reference photo as inspiration for the design — incorporate its likeness, theme, or imagery onto the cake (e.g. printed edible image, hand-piped portrait, themed decoration).'
+      ? 'Use the attached reference photo as inspiration — incorporate its likeness, theme, or imagery onto the cake (e.g. printed edible image, hand-piped portrait, themed decoration).'
       : '';
     return [
       'A photorealistic 3D rendered cake on a clean elegant cake stand, professional product photography,',
@@ -140,6 +147,7 @@
     ].filter(Boolean).join(' ');
   }
 
+  // ----- Submit -----
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const userText = promptEl.value.trim();
@@ -158,13 +166,12 @@
   retryBtn.addEventListener('click', () => {
     if (lastPayload) runGeneration(lastPayload);
   });
-
   regenBtn.addEventListener('click', () => {
     if (lastPayload) runGeneration(lastPayload);
   });
 
   async function runGeneration(payload) {
-    showOnly(loadingState);
+    setState('loading');
     startLoadingAnimation();
     generateBtn.disabled = true;
     regenBtn.disabled = true;
@@ -194,71 +201,46 @@
         throw new Error('No image returned. Try a different description.');
       }
 
-      lastResults = data.images.map((dataUrl) => ({
-        url: dataUrl,
-        userText: payload.userText,
-        styles: payload.styles
-      }));
-
-      renderResults(lastResults);
+      applyGenerated(data.images[0], payload);
     } catch (err) {
       console.error('[ai-designer]', err);
       errorMsg.textContent = err.message || 'Something went wrong. Try again.';
-      showOnly(errorState);
+      setState('error');
     } finally {
       stopLoadingAnimation();
       generateBtn.disabled = false;
       regenBtn.disabled = false;
-      regenBtn.hidden = false;
     }
   }
 
-  function renderResults(images) {
-    while (resultsEl.firstChild) resultsEl.removeChild(resultsEl.firstChild);
-    resultsEl.dataset.count = images.length;
+  function applyGenerated(dataUrl, payload) {
+    lastGeneratedSrc = dataUrl;
 
-    if (images.length === 1) {
-      selectImage(images[0]);
-      return;
-    }
+    // Swap the floating cake image to the AI-generated one
+    cakeImg.src = dataUrl;
+    cakeImg.alt = `AI cake: ${payload.userText.slice(0, 80)}`;
+    cakeEl.classList.add('is-generated');
+    cakeTagText.textContent = 'AI Generated';
 
-    images.forEach((img, idx) => {
-      const tile = document.createElement('div');
-      tile.className = 'ai-result-tile';
-      const imgEl = document.createElement('img');
-      imgEl.src = img.url;
-      imgEl.alt = `AI cake design ${idx + 1}`;
-      imgEl.loading = 'lazy';
-      tile.appendChild(imgEl);
-      tile.addEventListener('click', () => selectImage(img));
-      resultsEl.appendChild(tile);
-    });
-    showOnly(resultsEl);
-  }
+    // Clear overlays
+    setState('idle');
 
-  function selectImage(img) {
-    selectedImg.src = img.url;
+    // Reveal regenerate + order
+    regenBtn.hidden = false;
+    actionBar.hidden = false;
+
+    // Persist for order page
     try {
       sessionStorage.setItem('skinnyBakerAiCake', JSON.stringify({
-        image: img.url,
-        prompt: img.userText,
-        styles: img.styles,
+        image: dataUrl,
+        prompt: payload.userText,
+        styles: payload.styles,
         ts: Date.now()
       }));
     } catch (e) {
       console.warn('Could not persist AI design', e);
     }
     orderBtn.href = 'pages/order.html?ai=1';
-    showOnly(selectedEl);
   }
-
-  backBtn.addEventListener('click', () => {
-    if (lastResults.length > 1) {
-      showOnly(resultsEl);
-    } else {
-      showOnly(defaultState);
-      regenBtn.hidden = true;
-    }
-  });
 
 })();
