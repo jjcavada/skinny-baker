@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=2">
-  <link rel="stylesheet" href="css/home.css?v=2">
-  <link rel="stylesheet" href="css/ai-designer.css?v=3">
+  <link rel="stylesheet" href="css/styles.css?v=3">
+  <link rel="stylesheet" href="css/home.css?v=3">
+  <link rel="stylesheet" href="css/cake-studio.css?v=1">
 </head>
 <body>
 
@@ -247,162 +247,171 @@
     </div>
   </section>
 
-  <!-- ========== AI CAKE DESIGNER ========== -->
-  <section class="ai-lab" id="ai-designer">
+  <!-- ========== 3D CAKE STUDIO ========== -->
+  <section class="cake-studio" id="cake-studio">
     <!-- Background atmosphere -->
-    <div class="ai-lab__atmosphere">
-      <div class="ai-lab__glow ai-lab__glow--gold"></div>
-      <div class="ai-lab__glow ai-lab__glow--rose"></div>
-      <div class="ai-lab__noise"></div>
+    <div class="cake-studio__atmosphere">
+      <div class="cake-studio__glow cake-studio__glow--gold"></div>
+      <div class="cake-studio__glow cake-studio__glow--rose"></div>
+      <div class="cake-studio__noise"></div>
     </div>
 
-    <div class="ai-lab__container">
+    <div class="cake-studio__container">
 
-      <!-- ===== LEFT: Floating Cake Stage ===== -->
-      <div class="ai-lab__stage">
-        <div class="ai-lab__stage-inner" id="aiStageInner">
-
-          <!-- Floating cake (default + final result use this) -->
-          <div class="ai-lab__cake" id="aiCakeDefault">
-            <div class="ai-lab__cake-pedestal"></div>
-            <div class="ai-lab__cake-bob">
-              <img src="images/3d-cake-default.png" alt="3D rendered cake preview" id="aiCakeImg" class="ai-lab__cake-img">
-              <span class="ai-lab__cake-aura"></span>
-            </div>
-            <div class="ai-lab__cake-shadow"></div>
-            <span class="ai-lab__floating-tag">
-              <i class="fas fa-wand-magic-sparkles"></i>
-              <span id="aiCakeTagText">Featured creation</span>
-            </span>
-          </div>
+      <!-- ===== LEFT: 3D Canvas Stage ===== -->
+      <div class="cake-studio__stage">
+        <div class="cake-studio__canvas-wrap" id="cakeCanvasWrap">
+          <canvas id="cakeCanvas" class="cake-studio__canvas"></canvas>
 
           <!-- Loading overlay -->
-          <div class="ai-lab__overlay ai-lab__overlay--loading" id="aiLoadingState" hidden>
-            <div class="ai-lab__rings">
+          <div class="cake-studio__loading" id="cakeLoading">
+            <div class="cake-studio__rings">
               <span></span><span></span><span></span>
             </div>
-            <p class="ai-lab__overlay-title" id="aiLoadingText">Sculpting your cake…</p>
-            <p class="ai-lab__overlay-sub">10–20 seconds</p>
+            <p class="cake-studio__loading-text">Preparing studio…</p>
           </div>
 
-          <!-- Error overlay -->
-          <div class="ai-lab__overlay ai-lab__overlay--error" id="aiErrorState" hidden>
-            <i class="fas fa-triangle-exclamation"></i>
-            <p class="ai-lab__overlay-title" id="aiErrorMsg">Something went wrong.</p>
-            <button type="button" class="ai-lab__btn ai-lab__btn--ghost" id="aiRetryBtn">
-              <i class="fas fa-rotate"></i> Try again
-            </button>
+          <!-- Floating Interactive 3D tag -->
+          <span class="cake-studio__floating-tag">
+            <span class="cake-studio__pulse"></span>
+            Interactive 3D
+          </span>
+
+          <!-- Drag hint -->
+          <div class="cake-studio__hint" id="cakeHint">
+            <i class="fas fa-arrows-rotate"></i>
+            Drag to rotate · Pinch / scroll to zoom
           </div>
         </div>
 
-        <!-- Action bar — only after a generation -->
-        <div class="ai-lab__action-bar" id="aiActionBar" hidden>
-          <a href="pages/order.html" class="ai-lab__btn ai-lab__btn--gold" id="aiOrderBtn">
-            Order this design
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
+        <button type="button" class="cake-studio__btn cake-studio__btn--gold cake-studio__btn--lg" id="btnDownload">
+          <i class="fas fa-download"></i>
+          <span>Download Your Design</span>
+        </button>
       </div>
 
-      <!-- ===== RIGHT: Form ===== -->
-      <div class="ai-lab__panel">
+      <!-- ===== RIGHT: Controls ===== -->
+      <div class="cake-studio__panel">
 
-        <span class="ai-lab__badge">
-          <span class="ai-lab__badge-dot"></span>
-          Interactive Lab
+        <span class="cake-studio__badge">
+          <span class="cake-studio__badge-dot"></span>
+          Cake Studio
         </span>
 
-        <h2 class="ai-lab__title">
+        <h2 class="cake-studio__title">
           Design Your<br>
           <em>Dream Cake</em>
         </h2>
 
-        <p class="ai-lab__lead">
-          Describe what you imagine, attach a reference, and watch our AI sculpt a photoreal preview.
+        <p class="cake-studio__lead">
+          Build your cake live in 3D. Spin it, customize every detail, then download a portrait of your design.
         </p>
 
-        <form id="aiDesignerForm" class="ai-lab__form" autocomplete="off">
+        <div class="cake-studio__form">
 
-          <!-- Step 01 -->
-          <div class="ai-step">
-            <div class="ai-step__head">
-              <span class="ai-step__num">01</span>
-              <span class="ai-step__title">Describe your cake</span>
+          <!-- Step 01 — Tiers -->
+          <div class="cake-step">
+            <div class="cake-step__head">
+              <span class="cake-step__num">01</span>
+              <span class="cake-step__title">Tiers</span>
             </div>
-            <textarea
-              id="aiPrompt"
-              class="ai-lab__textarea"
-              rows="3"
-              placeholder="Two-tier wedding cake, blush pink fondant, gold leaf accents, fresh peonies on top…"
-              maxlength="500"
-              required></textarea>
-            <span class="ai-lab__count"><span id="aiPromptCount">0</span> / 500</span>
-          </div>
-
-          <!-- Step 02 -->
-          <div class="ai-step">
-            <div class="ai-step__head">
-              <span class="ai-step__num">02</span>
-              <span class="ai-step__title">Pick a vibe <em>· optional</em></span>
-            </div>
-            <div class="ai-lab__chips">
-              <button type="button" class="ai-chip" data-style="elegant minimal aesthetic, soft natural lighting">Elegant</button>
-              <button type="button" class="ai-chip" data-style="rustic buttercream, hand-textured frosting, fresh fruit, garden-style">Rustic</button>
-              <button type="button" class="ai-chip" data-style="ultra-modern geometric, sleek mirror glaze, architectural">Modern</button>
-              <button type="button" class="ai-chip" data-style="cute kawaii pastel, rounded shapes, candy decorations">Cute</button>
-              <button type="button" class="ai-chip" data-style="luxury gold metallic accents, baroque flourishes, opulent">Luxe</button>
-              <button type="button" class="ai-chip" data-style="playful colorful sprinkles, drip glaze, fun celebration">Playful</button>
+            <div class="cake-segment" data-control="tiers" role="radiogroup">
+              <button type="button" class="cake-segment__btn" data-value="1">1</button>
+              <button type="button" class="cake-segment__btn is-active" data-value="2">2</button>
+              <button type="button" class="cake-segment__btn" data-value="3">3</button>
             </div>
           </div>
 
-          <!-- Step 03 -->
-          <div class="ai-step">
-            <div class="ai-step__head">
-              <span class="ai-step__num">03</span>
-              <span class="ai-step__title">Reference photo <em>· optional</em></span>
+          <!-- Step 02 — Shape -->
+          <div class="cake-step">
+            <div class="cake-step__head">
+              <span class="cake-step__num">02</span>
+              <span class="cake-step__title">Shape</span>
             </div>
-
-            <input type="file" id="aiFile" accept="image/png,image/jpeg,image/webp" hidden>
-
-            <label for="aiFile" class="ai-lab__upload" id="aiUploadEmpty">
-              <span class="ai-lab__upload-icon"><i class="fas fa-image"></i></span>
-              <span class="ai-lab__upload-body">
-                <strong>Attach a reference</strong>
-                <small>Photo of a person, theme, or example design</small>
-              </span>
-              <span class="ai-lab__upload-arrow"><i class="fas fa-plus"></i></span>
-            </label>
-
-            <div class="ai-lab__upload-filled" id="aiUploadFilled" hidden>
-              <img id="aiUploadPreview" src="" alt="Reference">
-              <div>
-                <span class="ai-lab__upload-name" id="aiUploadName"></span>
-                <span class="ai-lab__upload-status">Attached</span>
-              </div>
-              <button type="button" id="aiUploadRemove" class="ai-lab__upload-x" aria-label="Remove reference">
-                <i class="fas fa-times"></i>
-              </button>
+            <div class="cake-segment" data-control="shape" role="radiogroup">
+              <button type="button" class="cake-segment__btn is-active" data-value="round">Round</button>
+              <button type="button" class="cake-segment__btn" data-value="square">Square</button>
+              <button type="button" class="cake-segment__btn" data-value="hex">Hexagonal</button>
             </div>
           </div>
 
-          <!-- Submit -->
-          <div class="ai-lab__cta-row">
-            <button type="submit" class="ai-lab__btn ai-lab__btn--gold ai-lab__btn--lg" id="aiGenerateBtn">
-              <i class="fas fa-wand-magic-sparkles"></i>
-              <span>Generate</span>
-            </button>
-            <button type="button" class="ai-lab__btn ai-lab__btn--ghost" id="aiRegenBtn" hidden>
-              <i class="fas fa-rotate"></i>
-              <span>Regenerate</span>
-            </button>
+          <!-- Step 03 — Frosting Color -->
+          <div class="cake-step">
+            <div class="cake-step__head">
+              <span class="cake-step__num">03</span>
+              <span class="cake-step__title">Frosting</span>
+            </div>
+            <div class="cake-swatches" data-control="color" role="radiogroup">
+              <button type="button" class="cake-swatch is-active" data-value="#f5e6d3" style="--c:#f5e6d3" aria-label="Cream"></button>
+              <button type="button" class="cake-swatch" data-value="#ffffff" style="--c:#ffffff" aria-label="White"></button>
+              <button type="button" class="cake-swatch" data-value="#f4c2c2" style="--c:#f4c2c2" aria-label="Blush"></button>
+              <button type="button" class="cake-swatch" data-value="#d8a7c4" style="--c:#d8a7c4" aria-label="Rose"></button>
+              <button type="button" class="cake-swatch" data-value="#a8d8e8" style="--c:#a8d8e8" aria-label="Sky"></button>
+              <button type="button" class="cake-swatch" data-value="#e9d8a6" style="--c:#e9d8a6" aria-label="Champagne"></button>
+              <button type="button" class="cake-swatch" data-value="#5b3a29" style="--c:#5b3a29" aria-label="Chocolate"></button>
+              <button type="button" class="cake-swatch" data-value="#1a1a1a" style="--c:#1a1a1a" aria-label="Charcoal"></button>
+              <button type="button" class="cake-swatch" data-value="#c9a84c" style="--c:#c9a84c" aria-label="Gold"></button>
+            </div>
           </div>
 
-          <p class="ai-lab__fineprint">
+          <!-- Step 04 — Decorations -->
+          <div class="cake-step">
+            <div class="cake-step__head">
+              <span class="cake-step__num">04</span>
+              <span class="cake-step__title">Decorations</span>
+            </div>
+            <div class="cake-toggles" data-control="deco">
+              <label class="cake-toggle is-active">
+                <input type="checkbox" data-deco="pearls" checked>
+                <span>Pearl border</span>
+              </label>
+              <label class="cake-toggle is-active">
+                <input type="checkbox" data-deco="candle" checked>
+                <span>Candle</span>
+              </label>
+              <label class="cake-toggle">
+                <input type="checkbox" data-deco="goldLeaf">
+                <span>Gold leaf</span>
+              </label>
+              <label class="cake-toggle">
+                <input type="checkbox" data-deco="drip">
+                <span>Drip glaze</span>
+              </label>
+              <label class="cake-toggle">
+                <input type="checkbox" data-deco="flowers">
+                <span>Flowers</span>
+              </label>
+              <label class="cake-toggle">
+                <input type="checkbox" data-deco="sparkles">
+                <span>Sparkles</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 05 — Scene -->
+          <div class="cake-step">
+            <div class="cake-step__head">
+              <span class="cake-step__num">05</span>
+              <span class="cake-step__title">Scene</span>
+            </div>
+            <div class="cake-segment" data-control="scene" role="radiogroup">
+              <button type="button" class="cake-segment__btn is-active" data-value="dark">Dark</button>
+              <button type="button" class="cake-segment__btn" data-value="light">Light</button>
+              <button type="button" class="cake-segment__btn" data-value="gold">Gold</button>
+            </div>
+          </div>
+
+          <a href="pages/order.html" class="cake-studio__order-cta">
+            Order This Design
+            <i class="fas fa-arrow-right"></i>
+          </a>
+
+          <p class="cake-studio__fineprint">
             <i class="fas fa-circle-info"></i>
-            Previews are illustrative. Final cake matches your design intent, not pixel-for-pixel.
+            The 3D preview is illustrative. Our bakers will finalize details when you place your order.
           </p>
 
-        </form>
+        </div>
       </div>
 
     </div>
@@ -425,51 +434,6 @@
         <span>CELEBRATIONS</span>
         <span class="text-mask__dot">&bull;</span>
         <span>GIFTS</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== STATS DIVIDER ========== -->
-  <section class="stats-divider">
-    <div class="stats-divider__bg"></div>
-    <div class="stats-divider__grain"></div>
-    <div class="stats-divider__content container">
-      <div class="stats-divider__heading reveal">
-        <span class="section-label" style="color: var(--clr-gold);">By the Numbers</span>
-      </div>
-      <div class="stats-divider__grid" data-stagger>
-        <div class="stat-card">
-          <div class="stat-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <span class="stat-card__number" data-count="500" data-suffix="+">0</span>
-          <span class="stat-card__divider"></span>
-          <span class="stat-card__label">Happy Customers</span>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6 2 10c0 2.5 1.5 4.5 3 5.5V20l3-2h4c5.52 0 10-4 10-8s-4.48-8-10-8z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
-          </div>
-          <span class="stat-card__number" data-count="50" data-suffix="+">0</span>
-          <span class="stat-card__divider"></span>
-          <span class="stat-card__label">Cake Designs</span>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          </div>
-          <span class="stat-card__number" data-count="10" data-suffix="">0</span>
-          <span class="stat-card__divider"></span>
-          <span class="stat-card__label">Unique Flavors</span>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <span class="stat-card__number" data-count="100" data-suffix="%">0</span>
-          <span class="stat-card__divider"></span>
-          <span class="stat-card__label">Made with Love</span>
-        </div>
       </div>
     </div>
   </section>
@@ -714,6 +678,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/ai-designer.js?v=4"></script>
+
+  <!-- Three.js ES module imports -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="js/cake-studio.js?v=1"></script>
 </body>
 </html>
