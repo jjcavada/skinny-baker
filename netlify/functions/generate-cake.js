@@ -85,19 +85,54 @@ exports.handler = async (event) => {
 };
 
 async function callPollinations(prompt) {
-  // Pollinations URL-based API. Append a random seed for variation on regenerate.
   const seed = Math.floor(Math.random() * 1_000_000);
-  const url = `${POLLINATIONS_BASE}/${encodeURIComponent(prompt)}?width=1024&height=1024&model=flux&nologo=true&seed=${seed}`;
+  // Use 'turbo' (SDXL-Turbo): much faster than flux, still good for product renders.
+  // Identifying referrer reduces rate limiting.
+  const params = new URLSearchParams({
+    width: '768',
+    height: '960',
+    model: 'turbo',
+    seed: String(seed),
+    referrer: 'skinny-baker.netlify.app',
+    enhance: 'true'
+  });
+  const url = `${POLLINATIONS_BASE}/${encodeURIComponent(prompt)}?${params.toString()}`;
 
-  const res = await fetch(url, { method: 'GET' });
+  // Abort cleanly before Netlify timeout hits
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 24_000);
+
+  let res;
+  try {
+    res = await fetch(url, {
+      method: 'GET',
+      signal: controller.signal,
+      headers: { 'Referer': 'https://skinny-baker.netlify.app' }
+    });
+  } catch (err) {
+    clearTimeout(timeoutId);
+    if (err.name === 'AbortError') {
+      throw new Error('Image generation took too long. Please try again.');
+    }
+    throw err;
+  }
+  clearTimeout(timeoutId);
+
+  if (res.status === 429) {
+    throw new Error('Image service is busy right now. Wait a few seconds and try again.');
+  }
   if (!res.ok) {
-    throw new Error(`Pollinations error ${res.status}`);
+    throw new Error(`Image service error (${res.status}). Try again.`);
+  }
+
+  const ct = res.headers.get('content-type') || '';
+  if (!ct.startsWith('image/')) {
+    throw new Error('Image service returned an unexpected response.');
   }
 
   const arrayBuffer = await res.arrayBuffer();
   const base64 = Buffer.from(arrayBuffer).toString('base64');
-  const mime = res.headers.get('content-type') || 'image/jpeg';
-  return `data:${mime};base64,${base64}`;
+  return `data:${ct};base64,${base64}`;
 }
 
 async function callGemini(prompt, referenceImage) {

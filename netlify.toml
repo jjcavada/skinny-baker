@@ -5,6 +5,9 @@
 [functions]
   node_bundler = "esbuild"
 
+[functions."generate-cake"]
+  timeout = 26
+
 [[headers]]
   for = "/*"
   [headers.values]

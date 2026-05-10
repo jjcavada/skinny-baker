@@ -170,38 +170,54 @@
     if (lastPayload) runGeneration(lastPayload);
   });
 
+  async function callApi(body) {
+    const res = await fetch('/.netlify/functions/generate-cake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      const e = new Error(err.error || `Server error (${res.status})`);
+      e.status = res.status;
+      throw e;
+    }
+    const data = await res.json();
+    if (!data.images || !data.images.length) {
+      throw new Error('No image returned. Try a different description.');
+    }
+    return data.images[0];
+  }
+
   async function runGeneration(payload) {
     setState('loading');
     startLoadingAnimation();
     generateBtn.disabled = true;
     regenBtn.disabled = true;
 
+    const body = { prompt: payload.prompt };
+    if (payload.reference) {
+      body.referenceImage = {
+        mimeType: payload.reference.mimeType,
+        data: payload.reference.base64
+      };
+    }
+
     try {
-      const body = { prompt: payload.prompt };
-      if (payload.reference) {
-        body.referenceImage = {
-          mimeType: payload.reference.mimeType,
-          data: payload.reference.base64
-        };
+      let imageDataUrl;
+      try {
+        imageDataUrl = await callApi(body);
+      } catch (firstErr) {
+        // Auto-retry once after a short delay for transient errors (502 / busy / timeout)
+        const transient = firstErr.status === 502 || /busy|too long|timeout/i.test(firstErr.message || '');
+        if (!transient) throw firstErr;
+
+        loadingText.textContent = 'Retrying…';
+        await sleep(2500);
+        imageDataUrl = await callApi(body);
       }
 
-      const res = await fetch('/.netlify/functions/generate-cake', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error || `Server error (${res.status})`);
-      }
-
-      const data = await res.json();
-      if (!data.images || !data.images.length) {
-        throw new Error('No image returned. Try a different description.');
-      }
-
-      applyGenerated(data.images[0], payload);
+      applyGenerated(imageDataUrl, payload);
     } catch (err) {
       console.error('[ai-designer]', err);
       errorMsg.textContent = err.message || 'Something went wrong. Try again.';
@@ -212,6 +228,8 @@
       regenBtn.disabled = false;
     }
   }
+
+  function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 
   function applyGenerated(dataUrl, payload) {
     lastGeneratedSrc = dataUrl;
