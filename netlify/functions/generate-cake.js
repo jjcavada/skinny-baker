@@ -30,11 +30,16 @@ exports.handler = async (event) => {
   }
 
   let prompt;
-  let variations = 1;
+  let referenceImage = null;
   try {
     const body = JSON.parse(event.body || '{}');
     prompt = (body.prompt || '').toString().trim();
-    variations = Math.max(1, Math.min(3, parseInt(body.variations, 10) || 1));
+    if (body.referenceImage && body.referenceImage.data && body.referenceImage.mimeType) {
+      referenceImage = {
+        mimeType: body.referenceImage.mimeType,
+        data: body.referenceImage.data
+      };
+    }
   } catch {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid JSON body' }) };
   }
@@ -47,54 +52,35 @@ exports.handler = async (event) => {
   }
 
   try {
-    // Run N requests in parallel for variations
-    const requests = Array.from({ length: variations }, (_, i) =>
-      callGemini(apiKey, addVariationSeed(prompt, i))
-    );
-    const settled = await Promise.allSettled(requests);
-
-    const images = [];
-    const errors = [];
-    settled.forEach((r) => {
-      if (r.status === 'fulfilled' && r.value) images.push(r.value);
-      else if (r.status === 'rejected') errors.push(r.reason?.message || 'Unknown error');
-    });
-
-    if (!images.length) {
-      return {
-        statusCode: 502,
-        headers,
-        body: JSON.stringify({
-          error: errors[0] || 'Image generation failed. Please try again.'
-        })
-      };
-    }
-
+    const dataUrl = await callGemini(apiKey, prompt, referenceImage);
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ images })
+      body: JSON.stringify({ images: [dataUrl] })
     };
   } catch (err) {
     console.error('[generate-cake]', err);
     return {
-      statusCode: 500,
+      statusCode: 502,
       headers,
-      body: JSON.stringify({ error: err.message || 'Internal error' })
+      body: JSON.stringify({ error: err.message || 'Image generation failed. Please try again.' })
     };
   }
 };
 
-function addVariationSeed(prompt, idx) {
-  const seeds = [
-    '',
-    'Show a slightly different angle and lighting. Variation B.',
-    'Different angle, alternate decoration arrangement. Variation C.'
-  ];
-  return seeds[idx] ? `${prompt} ${seeds[idx]}` : prompt;
-}
+async function callGemini(apiKey, prompt, referenceImage) {
+  // If a reference image is provided, place it BEFORE the text per Gemini guidance
+  const parts = [];
+  if (referenceImage) {
+    parts.push({
+      inlineData: {
+        mimeType: referenceImage.mimeType,
+        data: referenceImage.data
+      }
+    });
+  }
+  parts.push({ text: prompt });
 
-async function callGemini(apiKey, prompt) {
   const res = await fetch(ENDPOINT, {
     method: 'POST',
     headers: {
@@ -102,7 +88,7 @@ async function callGemini(apiKey, prompt) {
       'x-goog-api-key': apiKey
     },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }]
+      contents: [{ parts }]
     })
   });
 
@@ -117,10 +103,10 @@ async function callGemini(apiKey, prompt) {
   }
 
   const data = await res.json();
-  const parts = data?.candidates?.[0]?.content?.parts || [];
-  const imgPart = parts.find((p) => p.inlineData && p.inlineData.data);
+  const responseParts = data?.candidates?.[0]?.content?.parts || [];
+  const imgPart = responseParts.find((p) => p.inlineData && p.inlineData.data);
   if (!imgPart) {
-    const textPart = parts.find((p) => p.text);
+    const textPart = responseParts.find((p) => p.text);
     throw new Error(textPart?.text || 'Gemini returned no image.');
   }
   const mime = imgPart.inlineData.mimeType || 'image/png';

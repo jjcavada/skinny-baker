@@ -9,7 +9,7 @@
   const generateBtn = document.getElementById('aiGenerateBtn');
   const regenBtn = document.getElementById('aiRegenBtn');
 
-  const emptyState = document.getElementById('aiEmptyState');
+  const defaultState = document.getElementById('aiDefaultState');
   const loadingState = document.getElementById('aiLoadingState');
   const loadingText = document.getElementById('aiLoadingText');
   const resultsEl = document.getElementById('aiResults');
@@ -21,9 +21,18 @@
   const errorMsg = document.getElementById('aiErrorMsg');
   const retryBtn = document.getElementById('aiRetryBtn');
 
+  // Reference image upload elements
+  const fileInput = document.getElementById('aiFile');
+  const uploadEmpty = document.getElementById('aiUploadEmpty');
+  const uploadFilled = document.getElementById('aiUploadFilled');
+  const uploadPreview = document.getElementById('aiUploadPreview');
+  const uploadName = document.getElementById('aiUploadName');
+  const uploadRemove = document.getElementById('aiUploadRemove');
+
   const activeStyles = new Set();
   let lastPayload = null;
   let lastResults = [];
+  let referenceImage = null; // { dataUrl, mimeType, base64 }
 
   promptEl.addEventListener('input', () => {
     countEl.textContent = promptEl.value.length;
@@ -42,8 +51,54 @@
     });
   });
 
+  // ----- Reference image upload -----
+  fileInput.addEventListener('change', async (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert('Image is too large. Max 10MB.');
+      fileInput.value = '';
+      return;
+    }
+
+    try {
+      const dataUrl = await readFileAsDataURL(file);
+      const base64 = dataUrl.split(',')[1];
+      referenceImage = {
+        dataUrl,
+        mimeType: file.type || 'image/jpeg',
+        base64,
+        name: file.name
+      };
+      uploadPreview.src = dataUrl;
+      uploadName.textContent = file.name;
+      uploadEmpty.hidden = true;
+      uploadFilled.hidden = false;
+    } catch (err) {
+      console.error('File read failed', err);
+      alert('Could not read image. Try another file.');
+    }
+  });
+
+  uploadRemove.addEventListener('click', () => {
+    referenceImage = null;
+    fileInput.value = '';
+    uploadFilled.hidden = true;
+    uploadEmpty.hidden = false;
+  });
+
+  function readFileAsDataURL(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('Read failed'));
+      reader.readAsDataURL(file);
+    });
+  }
+
   function showOnly(node) {
-    [emptyState, loadingState, resultsEl, selectedEl, errorState].forEach((n) => {
+    [defaultState, loadingState, resultsEl, selectedEl, errorState].forEach((n) => {
       if (n) n.hidden = (n !== node);
     });
   }
@@ -70,14 +125,18 @@
 
   function buildPrompt(userText) {
     const styleString = activeStyles.size
-      ? `Style: ${Array.from(activeStyles).join(', ')}.`
+      ? `Style cues: ${Array.from(activeStyles).join(', ')}.`
+      : '';
+    const refLine = referenceImage
+      ? 'Use the attached reference photo as inspiration for the design — incorporate its likeness, theme, or imagery onto the cake (e.g. printed edible image, hand-piped portrait, themed decoration).'
       : '';
     return [
       'A photorealistic 3D rendered cake on a clean elegant cake stand, professional product photography,',
       'soft studio lighting, beautiful bakery presentation, sharp focus, high detail, mouth-watering, magazine quality.',
       `Cake description: ${userText}.`,
       styleString,
-      'No people, no text, no watermarks. Centered composition, neutral cream or warm wood background.'
+      refLine,
+      'No people in the scene, no text overlays, no watermarks. Centered composition, neutral cream or warm wood background.'
     ].filter(Boolean).join(' ');
   }
 
@@ -86,10 +145,13 @@
     const userText = promptEl.value.trim();
     if (!userText) return;
 
-    const variations = parseInt(form.querySelector('input[name="variations"]:checked').value, 10);
     const fullPrompt = buildPrompt(userText);
-
-    lastPayload = { prompt: fullPrompt, userText, variations, styles: Array.from(activeStyles) };
+    lastPayload = {
+      prompt: fullPrompt,
+      userText,
+      styles: Array.from(activeStyles),
+      reference: referenceImage
+    };
     await runGeneration(lastPayload);
   });
 
@@ -108,13 +170,18 @@
     regenBtn.disabled = true;
 
     try {
+      const body = { prompt: payload.prompt };
+      if (payload.reference) {
+        body.referenceImage = {
+          mimeType: payload.reference.mimeType,
+          data: payload.reference.base64
+        };
+      }
+
       const res = await fetch('/.netlify/functions/generate-cake', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          prompt: payload.prompt,
-          variations: payload.variations
-        })
+        body: JSON.stringify(body)
       });
 
       if (!res.ok) {
@@ -147,9 +214,13 @@
   }
 
   function renderResults(images) {
-    // Clear existing tiles safely
     while (resultsEl.firstChild) resultsEl.removeChild(resultsEl.firstChild);
     resultsEl.dataset.count = images.length;
+
+    if (images.length === 1) {
+      selectImage(images[0]);
+      return;
+    }
 
     images.forEach((img, idx) => {
       const tile = document.createElement('div');
@@ -162,12 +233,7 @@
       tile.addEventListener('click', () => selectImage(img));
       resultsEl.appendChild(tile);
     });
-
-    if (images.length === 1) {
-      selectImage(images[0]);
-    } else {
-      showOnly(resultsEl);
-    }
+    showOnly(resultsEl);
   }
 
   function selectImage(img) {
@@ -190,7 +256,7 @@
     if (lastResults.length > 1) {
       showOnly(resultsEl);
     } else {
-      showOnly(emptyState);
+      showOnly(defaultState);
       regenBtn.hidden = true;
     }
   });

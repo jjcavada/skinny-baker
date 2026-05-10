@@ -262,16 +262,16 @@
         <div class="ai-designer__preview reveal-left">
           <div class="ai-designer__preview-frame" id="aiPreviewFrame">
 
-            <!-- Empty state -->
-            <div class="ai-designer__empty" id="aiEmptyState">
-              <div class="ai-designer__empty-icon">
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
-                  <path d="M19 15L19.7 17.3L22 18L19.7 18.7L19 21L18.3 18.7L16 18L18.3 17.3L19 15Z"/>
-                </svg>
+            <!-- Default state — featured cake sample -->
+            <div class="ai-designer__default" id="aiDefaultState">
+              <img src="Cakes_design/21.png" alt="Sample custom cake design" class="ai-designer__default-img">
+              <div class="ai-designer__default-overlay">
+                <span class="ai-designer__interactive-badge">
+                  <span class="ai-designer__pulse"></span>
+                  Interactive Lab
+                </span>
+                <p class="ai-designer__default-hint">Describe your cake on the right →</p>
               </div>
-              <p class="ai-designer__empty-title">Your design appears here</p>
-              <p class="ai-designer__empty-sub">Tell the AI what you want →</p>
             </div>
 
             <!-- Loading state -->
@@ -342,20 +342,34 @@
               <button type="button" class="ai-chip" data-style="playful colorful sprinkles, drip glaze, fun celebration">Playful</button>
             </div>
 
-            <!-- Variations toggle -->
+            <!-- Reference image upload -->
             <label class="ai-designer__label">
               <span class="ai-designer__label-num">03</span>
-              <span class="ai-designer__label-text">How many designs?</span>
+              <span class="ai-designer__label-text">Reference photo <em>(optional)</em></span>
             </label>
-            <div class="ai-designer__radio-group">
-              <label class="ai-radio">
-                <input type="radio" name="variations" value="1" checked>
-                <span>1 design — fast</span>
+            <div class="ai-designer__upload" id="aiUpload">
+              <input type="file" id="aiFile" accept="image/png,image/jpeg,image/webp" hidden>
+
+              <!-- Empty upload state -->
+              <label for="aiFile" class="ai-designer__upload-empty" id="aiUploadEmpty">
+                <i class="fas fa-camera"></i>
+                <div>
+                  <strong>Upload a reference</strong>
+                  <span>e.g. a photo of your dad, a logo, a theme picture</span>
+                </div>
               </label>
-              <label class="ai-radio">
-                <input type="radio" name="variations" value="3">
-                <span>3 variations — pick your favorite</span>
-              </label>
+
+              <!-- Filled state -->
+              <div class="ai-designer__upload-filled" id="aiUploadFilled" hidden>
+                <img id="aiUploadPreview" src="" alt="Reference">
+                <div class="ai-designer__upload-info">
+                  <span class="ai-designer__upload-name" id="aiUploadName"></span>
+                  <span class="ai-designer__upload-tag">Reference attached</span>
+                </div>
+                <button type="button" class="ai-designer__upload-remove" id="aiUploadRemove" aria-label="Remove reference">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
             </div>
 
             <!-- Submit -->
