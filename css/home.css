@@ -935,3 +935,41 @@
   .stats-divider__grid { grid-template-columns: repeat(2, 1fr); }
   .instagram__grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+@media (max-width: 480px) {
+  .hero-logo__sprig--left,
+  .hero-logo__sprig--right { display: none; }
+  .hero-logo__title-the { font-size: 1rem; }
+  .hero-logo__title-script { font-size: clamp(2.4rem, 13vw, 3.6rem); }
+  .hero-logo__subtitle { font-size: 0.85rem; }
+  .hero__scroll-hint { display: none; }
+
+  .marquee__item { font-size: 1rem; }
+  .marquee__img { width: 36px; height: 36px; }
+
+  .about-preview__badge {
+    padding: 0.6rem 0.9rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+  .about-preview__badge .script-text { font-size: 0.9rem; }
+  .about-preview__badge strong { font-size: 0.7rem; }
+
+  .stats-divider__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .stat-card__number { font-size: 2.2rem; }
+  .stat-card__label { font-size: 0.7rem; }
+  .stat-card__icon { width: 44px; height: 44px; }
+  .stat-card__icon svg { width: 24px; height: 24px; }
+
+  .feedback-carousel__phone { width: 220px; padding: 8px; }
+  .feedback-editorial__quote { font-size: 5rem; top: -1rem; }
+  .feedback-editorial__stats { gap: 1rem; }
+  .feedback-editorial__stat strong { font-size: 1.6rem; }
+
+  .instagram__grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+
+  .cta-section h2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+}

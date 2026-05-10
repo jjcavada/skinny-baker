@@ -17,6 +17,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/ai-designer.css">
 </head>
 <body>
 
@@ -242,6 +243,139 @@
 
       <div class="text-center" style="margin-top: 3rem;">
         <a href="pages/menu.html" class="btn btn--primary reveal">View Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AI CAKE DESIGNER ========== -->
+  <section class="section ai-designer" id="ai-designer">
+    <div class="ai-designer__bg-grain"></div>
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Powered by AI</span>
+        <h2 class="section-title centered">Design Your Dream Cake</h2>
+        <p class="ai-designer__intro">Describe the cake you imagine — our AI generates realistic 3D previews in seconds. Refine, regenerate, and order what you love.</p>
+      </div>
+
+      <div class="ai-designer__layout">
+        <!-- LEFT: Preview / Output -->
+        <div class="ai-designer__preview reveal-left">
+          <div class="ai-designer__preview-frame" id="aiPreviewFrame">
+
+            <!-- Empty state -->
+            <div class="ai-designer__empty" id="aiEmptyState">
+              <div class="ai-designer__empty-icon">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
+                  <path d="M19 15L19.7 17.3L22 18L19.7 18.7L19 21L18.3 18.7L16 18L18.3 17.3L19 15Z"/>
+                </svg>
+              </div>
+              <p class="ai-designer__empty-title">Your design appears here</p>
+              <p class="ai-designer__empty-sub">Tell the AI what you want →</p>
+            </div>
+
+            <!-- Loading state -->
+            <div class="ai-designer__loading" id="aiLoadingState" hidden>
+              <div class="ai-designer__loading-spin"></div>
+              <p class="ai-designer__loading-text" id="aiLoadingText">Sculpting your cake…</p>
+              <span class="ai-designer__loading-sub">This usually takes 10–20 seconds</span>
+            </div>
+
+            <!-- Results grid (3 variations or 1) -->
+            <div class="ai-designer__results" id="aiResults" hidden></div>
+
+            <!-- Selected single image view -->
+            <div class="ai-designer__selected" id="aiSelected" hidden>
+              <img id="aiSelectedImg" src="" alt="Your AI cake design">
+              <div class="ai-designer__selected-actions">
+                <button type="button" class="btn btn--outline btn--sm" id="aiBackToGrid">
+                  <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <a href="pages/order.html" class="btn btn--gold btn--sm" id="aiOrderBtn">
+                  Order This Design <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Error state -->
+            <div class="ai-designer__error" id="aiErrorState" hidden>
+              <i class="fas fa-exclamation-triangle"></i>
+              <p id="aiErrorMsg">Something went wrong. Try again.</p>
+              <button type="button" class="btn btn--outline btn--sm" id="aiRetryBtn">Retry</button>
+            </div>
+
+          </div>
+          <div class="ai-designer__preview-caption">
+            <span class="ai-designer__caption-mark">AI</span>
+            <span>Generated previews are illustrative — final cake matches the design intent, not pixel-for-pixel.</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Input -->
+        <div class="ai-designer__form reveal-right">
+          <form id="aiDesignerForm" autocomplete="off">
+
+            <label class="ai-designer__label" for="aiPrompt">
+              <span class="ai-designer__label-num">01</span>
+              <span class="ai-designer__label-text">Describe your cake</span>
+            </label>
+            <textarea
+              id="aiPrompt"
+              class="ai-designer__textarea"
+              rows="4"
+              placeholder="e.g. Two-tier wedding cake, blush pink fondant with gold leaf accents, fresh peonies on top, elegant and minimal"
+              maxlength="500"
+              required></textarea>
+            <span class="ai-designer__count"><span id="aiPromptCount">0</span> / 500</span>
+
+            <!-- Style chips -->
+            <label class="ai-designer__label">
+              <span class="ai-designer__label-num">02</span>
+              <span class="ai-designer__label-text">Style <em>(optional)</em></span>
+            </label>
+            <div class="ai-designer__chips" role="group" aria-label="Style presets">
+              <button type="button" class="ai-chip" data-style="elegant minimal aesthetic, soft natural lighting">Elegant</button>
+              <button type="button" class="ai-chip" data-style="rustic buttercream, hand-textured frosting, fresh fruit, garden-style">Rustic</button>
+              <button type="button" class="ai-chip" data-style="ultra-modern geometric, sleek mirror glaze, architectural">Modern</button>
+              <button type="button" class="ai-chip" data-style="cute kawaii pastel, rounded shapes, candy decorations">Cute</button>
+              <button type="button" class="ai-chip" data-style="luxury gold metallic accents, baroque flourishes, opulent">Luxe</button>
+              <button type="button" class="ai-chip" data-style="playful colorful sprinkles, drip glaze, fun celebration">Playful</button>
+            </div>
+
+            <!-- Variations toggle -->
+            <label class="ai-designer__label">
+              <span class="ai-designer__label-num">03</span>
+              <span class="ai-designer__label-text">How many designs?</span>
+            </label>
+            <div class="ai-designer__radio-group">
+              <label class="ai-radio">
+                <input type="radio" name="variations" value="1" checked>
+                <span>1 design — fast</span>
+              </label>
+              <label class="ai-radio">
+                <input type="radio" name="variations" value="3">
+                <span>3 variations — pick your favorite</span>
+              </label>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn--primary ai-designer__submit" id="aiGenerateBtn">
+              <i class="fas fa-wand-magic-sparkles"></i>
+              <span>Generate Design</span>
+            </button>
+
+            <button type="button" class="btn btn--outline ai-designer__regen" id="aiRegenBtn" hidden>
+              <i class="fas fa-rotate"></i>
+              <span>Regenerate</span>
+            </button>
+
+            <p class="ai-designer__disclaimer">
+              <i class="fas fa-circle-info"></i>
+              You'll be asked to confirm details on the order form. The bakery may suggest small adjustments for feasibility.
+            </p>
+
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -552,5 +686,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/ai-designer.js"></script>
 </body>
 </html>

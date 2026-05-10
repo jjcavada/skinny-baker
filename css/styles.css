@@ -816,5 +816,32 @@ p {
 
 @media (max-width: 480px) {
   .container { padding: 0 var(--sp-sm); }
-  .btn { padding: 0.85rem 1.75rem; }
+  .btn { padding: 0.85rem 1.75rem; font-size: 0.82rem; }
+  h1, .h1 { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.1; }
+  h2, .h2, .section-title { font-size: clamp(1.7rem, 7vw, 2.4rem); line-height: 1.15; }
+  h3, .h3 { font-size: 1.15rem; }
+  body { line-height: 1.7; }
+  .section { padding: 3rem 0; }
+  .section-label { font-size: 0.65rem; }
+  .page-header { padding-top: calc(var(--nav-height) + 2.5rem); padding-bottom: 2rem; }
+  .page-header__title { font-size: clamp(2.4rem, 12vw, 3.6rem); }
+  .page-header::before { font-size: 9rem; opacity: 0.35; }
 }
+
+/* Tap target safety + touch UX */
+@media (hover: none) and (pointer: coarse) {
+  .btn, .nav__link, .ai-chip, .ai-radio,
+  .footer__social-link, .footer__link {
+    min-height: 44px;
+  }
+  .cursor-glow { display: none !important; }
+  /* Disable hover-only effects that linger on tap */
+  .card:hover, .card__image-wrapper:hover,
+  .order-info__card:hover, .ai-result-tile:hover {
+    transform: none;
+  }
+}
+
+/* Prevent horizontal overflow from any wide element */
+html, body { max-width: 100vw; }
+img, video, iframe { max-width: 100%; }

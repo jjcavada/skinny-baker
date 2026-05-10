@@ -5,3 +5,7 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
+
+# Playwright debugging artifacts
+.playwright-mcp/
+full-local.png
